@@ -19,7 +19,7 @@ public class DeleteProgramUseCase implements Function<String, Mono<Void>> {
 
     @Override
     public Mono<Void> apply(String id) {
-        Objects.requireNonNull(id, "El id es requerido");
+        Objects.requireNonNull(id, "The ID is required");
         return programRepository.deleteById(id);
     }
 }
