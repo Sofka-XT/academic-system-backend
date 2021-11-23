@@ -29,7 +29,5 @@ y
 Isrc/main/java/com/sofkau/academicsystembackend/configs/WebFluxConfig.java,a\6\a64d0c18f08843512981978830fa0f6cb18c41b4
 
 Osrc/main/java/com/sofkau/academicsystembackend/collections/course/Category.java,c\f\cf839c0dbaa3cfc5cd6a1430f04b63fee932d3bd
-{
-Ksrc/main/java/com/sofkau/academicsystembackend/models/course/CourseDTO.java,3\4\3460f14ee059694a995d02d69f416999f05c26b9
 }
 Msrc/main/java/com/sofkau/academicsystembackend/collections/course/Course.java,c\c\cc9bdedaccc867cd55efe8144cc70c92384134eb
