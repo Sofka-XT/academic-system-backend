@@ -50,4 +50,12 @@ public class CourseTime {
     public void setCategories(Map<String, Integer> categories) {
         this.categories = categories;
     }
+
+    public Integer getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(Integer totalTime) {
+        this.totalTime = totalTime;
+    }
 }
