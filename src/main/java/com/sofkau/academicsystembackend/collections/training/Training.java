@@ -4,24 +4,25 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Document
 public class Training {
     @Id
     private String trainingId;
     private String name;
-    private  String programId;
+    private Program program;
     private LocalDate startingDate;
-    private String apprentices;
+    private List<Apprentice> apprentices;
 
 
     public Training() {
     }
 
-    public Training(String trainingId, String name, String programId, LocalDate startingDate, String apprentices) {
+    public Training(String trainingId, String name, Program program, LocalDate startingDate, List<Apprentice> apprentices) {
         this.trainingId = trainingId;
         this.name = name;
-        this.programId = programId;
+        this.program = program;
         this.startingDate = startingDate;
         this.apprentices = apprentices;
     }
@@ -42,12 +43,12 @@ public class Training {
         this.name = name;
     }
 
-    public String getProgramId() {
-        return programId;
+    public Program getProgram() {
+        return program;
     }
 
-    public void setProgramId(String programId) {
-        this.programId = programId;
+    public void setProgram(Program program) {
+        this.program = program;
     }
 
     public LocalDate getStartingDate() {
@@ -58,11 +59,11 @@ public class Training {
         this.startingDate = startingDate;
     }
 
-    public String getApprentices() {
+    public List<Apprentice> getApprentices() {
         return apprentices;
     }
 
-    public void setApprentices(String apprentices) {
+    public void setApprentices(List<Apprentice> apprentices) {
         this.apprentices = apprentices;
     }
 }
