@@ -1,13 +1,13 @@
 package com.sofkau.academicsystembackend.collections.course;
 
-import java.util.Map;
+import java.util.Set;
 
 public class Category {
     private String name;
-    private Map<String, String> rules;
+    private Set<Rule> rules;
 
 
-    public Category(String name, Map<String, String> rules) {
+    public Category(String name, Set<Rule> rules) {
         this.name = name;
         this.rules = rules;
     }
@@ -20,11 +20,11 @@ public class Category {
         this.name = name;
     }
 
-    public Map<String, String> getRules() {
+    public Set<Rule> getRules() {
         return rules;
     }
 
-    public void setRules(Map<String, String> rules) {
+    public void setRules(Set<Rule> rules) {
         this.rules = rules;
     }
 
