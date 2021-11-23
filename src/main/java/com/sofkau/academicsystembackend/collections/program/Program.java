@@ -23,7 +23,7 @@ public class Program {
     public Program(String id, String name, List<CourseTime> courses) {
         this.id = id;
         this.name = name;
-        this.courses = new ArrayList<>();
+        this.courses = courses;
 
     }
 
