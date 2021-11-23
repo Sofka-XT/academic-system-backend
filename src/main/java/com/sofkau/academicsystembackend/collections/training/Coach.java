@@ -1,19 +1,19 @@
 package com.sofkau.academicsystembackend.collections.training;
 
-public class Apprentice{
+public class Coach {
     private String id;
     private String name;
     private String phoneNumber;
     private String emailAddress;
 
-    public Apprentice() {
+    public Coach() {
     }
 
-    public Apprentice(String id) {
+    public Coach(String id) {
         this.id = id;
     }
 
-    public Apprentice(String id, String name, String phoneNumber, String emailAddress) {
+    public Coach(String id, String name, String phoneNumber, String emailAddress) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
