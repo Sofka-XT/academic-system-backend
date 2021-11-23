@@ -1,4 +1,4 @@
-package com.sofkau.academicsystembackend.usecases;
+package com.sofkau.academicsystembackend.usecases.training;
 
 import com.sofkau.academicsystembackend.collections.training.Training;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;

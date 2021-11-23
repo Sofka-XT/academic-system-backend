@@ -1,3 +1,7 @@
 
 d
 java:S2094"BRemove this empty class, write its code or make it an "interface".(¸­şüÿÿÿÿ8¼şÍÍÔ/
+{
+java:S1128"YRemove this unused import 'com.sofkau.academicsystembackend.collections.course.Category'.(Ğêú™ûÿÿÿÿ8ì£×éÔ/
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ8ì£×éÔ/
