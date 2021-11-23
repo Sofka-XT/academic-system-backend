@@ -1,6 +1,8 @@
 package com.sofkau.academicsystembackend.models.training;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
+import com.sofkau.academicsystembackend.collections.training.Program;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
@@ -8,15 +10,15 @@ import java.util.List;
 
 
 public class TrainingDTO {
-    @NotBlank(message = "This input can't be blank")
     private String trainingId;
-    @NotBlank(message = "This input can't be blank")
+
     private String name;
-    @NotBlank(message = "This input can't be blank")
+
     private Program program;
-    @NotBlank(message = "This input can't be blank")
+
+
     private LocalDate startingDate;
-    @NotBlank(message = "This input can't be blank")
+
     private List<Apprentice> apprentices;
 
 

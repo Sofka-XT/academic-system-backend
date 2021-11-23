@@ -12,9 +12,8 @@ import reactor.core.publisher.Mono;
 @Validated
 public class CreateTrainigUseCase implements CreateTraining {
 
-    @Autowired
+
     private TrainingMapper trainingMapper;
-    @Autowired
     private TrainingRepository trainingRepository;
 
     public CreateTrainigUseCase(TrainingRepository trainingRepository, TrainingMapper trainingMapper) {
