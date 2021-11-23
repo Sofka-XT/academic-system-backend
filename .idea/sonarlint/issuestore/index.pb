@@ -8,8 +8,6 @@ Vsrc/main/java/com/sofkau/academicsystembackend/routers/course/GetCourseByIdRout
 ‡
 Wsrc/main/java/com/sofkau/academicsystembackend/usecases/course/DeleteCourseUseCase.java,d\3\d31d2b800944b86c12d96cc7c9bea2ceda5aae6f
 ‡
-Wsrc/main/java/com/sofkau/academicsystembackend/usecases/course/GetAllCourseUseCase.java,9\b\9bcf51100275c821b9f492920f42f1ffe316ebb3
-‡
 Wsrc/main/java/com/sofkau/academicsystembackend/usecases/course/UpdateCourseUseCase.java,6\5\65565d93b8634d1fb456bbb75f159862c2023164
 ˆ
 Xsrc/main/java/com/sofkau/academicsystembackend/usecases/course/GetCourseByIdUseCase.java,c\f\cf61c496b36fcca4a42ef6a76868ca213372552a
