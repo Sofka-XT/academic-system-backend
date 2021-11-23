@@ -13,5 +13,3 @@ Wsrc/main/java/com/sofkau/academicsystembackend/usecases/course/UpdateCourseUseC
 Xsrc/main/java/com/sofkau/academicsystembackend/usecases/course/GetCourseByIdUseCase.java,c\f\cf61c496b36fcca4a42ef6a76868ca213372552a
 …
 Usrc/main/java/com/sofkau/academicsystembackend/routers/course/DeleteCourseRouter.java,d\c\dc06e75cba3dca2265ea2c3a1e860d520a4bbde4
-7
-pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
