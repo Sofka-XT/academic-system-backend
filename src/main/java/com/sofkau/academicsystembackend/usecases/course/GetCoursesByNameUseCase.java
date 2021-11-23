@@ -24,7 +24,7 @@ public class GetCoursesByNameUseCase implements Function<String, Flux<CourseDTO>
 
     @Override
     public Flux<CourseDTO> apply(String name) {
-        Objects.requireNonNull(name);
+        Objects.requireNonNull(name, "Este campo no puede ser nulo");
         return courseRepository.findAll()
                 .map(mapperUtilsCourse.mapperEntityToCourse())
                 .filter(courseDTO -> courseDTO.getName().toLowerCase().contains(name.toLowerCase()));
