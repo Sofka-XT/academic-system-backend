@@ -24,7 +24,6 @@ public class CreateTrainingRouter {
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result));
-        System.out.printf("Entramos a la ruta");
         return route(POST("/CreateTraining").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(TrainingDTO.class)
                         .flatMap(executor));
