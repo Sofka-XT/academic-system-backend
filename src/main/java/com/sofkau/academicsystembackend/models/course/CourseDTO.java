@@ -2,13 +2,17 @@ package com.sofkau.academicsystembackend.models.course;
 
 import com.sofkau.academicsystembackend.collections.course.Category;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.Set;
 
 public class CourseDTO {
 
-    private Set<Category> categories;
-    private String name;
     private Integer id;
+    @NotBlank(message = "el nombre del curso no puede estar en blanco")
+    private String name;
+    @NotEmpty(message = "Debe existir al menos una categoria")
+    private Set<Category> categories;
 
     public CourseDTO(Integer id, String name, Set<Category> categories) {
         this.id = id;
