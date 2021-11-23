@@ -1,6 +1,8 @@
 package com.sofkau.academicsystembackend.usecases.listactivetraining;
 
 
+import com.sofkau.academicsystembackend.collections.course.Course;
+import com.sofkau.academicsystembackend.collections.program.CourseTime;
 import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
 import com.sofkau.academicsystembackend.collections.training.Training;
@@ -16,6 +18,7 @@ import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @SpringBootTest
 public class GetActiveTrainingsUseCaseTest {
@@ -31,22 +34,35 @@ public class GetActiveTrainingsUseCaseTest {
 
         // instancia del programa
         Program program = new Program("1", "hola", new Date(29,9,1988));
+        //Program program = new Program("1", "hola", new Date());
+
         // instancia del aprendiz
         Apprentice apprentice = new Apprentice();
         ArrayList<Apprentice>  apprenticeList = new ArrayList<Apprentice>();
         apprenticeList.add(apprentice);
 
-        var trainingDTO = new TrainingDTO();
         var training = new Training("1", "train", program, LocalDate.now(), apprenticeList);
 
+        program.addCourse();
+        program.getCourses().get(0).setCategories(new HashMap<>());
+        program.getCourses().get(0).addTime("git", 2);
+        program.getCourses().get(0).addTime("java", 4);
+        program.getCourses().get(0).addTime("javascript", 4);
+        program.getCourses().get(0).SumTime();
+
+        program.addCourse();
+        program.getCourses().get(1).setCategories(new HashMap<>());
+        program.getCourses().get(1).addTime("Spring Boot", 5);
+        program.getCourses().get(1).addTime("React", 5);
+        program.getCourses().get(1).SumTime();
 
         training.setProgram(program);
 
 
         Mockito.when(trainingRepository.findAll()).thenReturn(Flux.just(training));
 
-        var result = getActiveTrainingsUseCase.get();
+        var results = getActiveTrainingsUseCase.get();
 
-        Assertions.assertEquals(result.blockFirst().getName(), "train");
+        Assertions.assertEquals(0, results.collectList().block().size());
     }
 }
