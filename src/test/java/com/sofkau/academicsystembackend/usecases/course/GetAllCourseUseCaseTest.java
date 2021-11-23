@@ -1,7 +1,6 @@
 package com.sofkau.academicsystembackend.usecases.course;
 
-import com.sofkau.academicsystembackend.collections.course.Category;
-import com.sofkau.academicsystembackend.collections.course.Course;
+import com.sofkau.academicsystembackend.collections.course.*;
 import com.sofkau.academicsystembackend.models.course.CourseDTO;
 import com.sofkau.academicsystembackend.repositories.CourseRepository;
 import org.junit.jupiter.api.Assertions;
@@ -31,12 +30,11 @@ class GetAllCourseUseCaseTest {
     @Test
     void getAllCourseUseCaseTest() {
 
-        Set<Category> categories = new HashSet<>();
-        Map<String, String> rules = new HashMap<>();
 
-        rules.put("rojo", "25");
-        rules.put("amarillo", "50");
-        rules.put("verde", "75");
+        Set<Category> categories = new HashSet<>();
+        Set<Rule> rules = new HashSet<>();
+
+        rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
         categories.add(new Category("testCategorie1", rules));
         categories.add(new Category("testCategorie2", rules));
@@ -52,7 +50,10 @@ class GetAllCourseUseCaseTest {
 
         var result = getAllCourseUseCase.get();
 
-        Assertions.assertEquals(result.blockFirst().getName(),"testCourse1");
-        Assertions.assertEquals(result.blockFirst().getCategories().size(),2);
+        Assertions.assertEquals(result.blockFirst().getName(), "testCourse1");
+        Assertions.assertEquals(result.blockFirst().getCategories().size(), 2);
+
     }
+
+
 }
