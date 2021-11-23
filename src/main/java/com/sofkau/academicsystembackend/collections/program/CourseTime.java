@@ -17,6 +17,7 @@ public class CourseTime {
         this.id = id;
         this.name = name;
         this.categories = categories;
+        this.totalTime = 0;
     }
 
     public void addTime(String name, Integer time){
