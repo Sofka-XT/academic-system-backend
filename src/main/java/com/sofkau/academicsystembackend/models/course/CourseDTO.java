@@ -8,23 +8,23 @@ import java.util.Set;
 
 public class CourseDTO {
 
-    private Integer id;
+    private String id;
     @NotBlank(message = "el nombre del curso no puede estar en blanco")
     private String name;
     @NotEmpty(message = "Debe existir al menos una categoria")
     private Set<Category> categories;
 
-    public CourseDTO(Integer id, String name, Set<Category> categories) {
+    public CourseDTO(String id, String name, Set<Category> categories) {
         this.id = id;
         this.name = name;
         this.categories = categories;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

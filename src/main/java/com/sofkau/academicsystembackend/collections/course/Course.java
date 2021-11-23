@@ -8,19 +8,18 @@ import java.util.*;
 @Document
 public class Course {
     @Id
-    private Integer id;
-
+    private String id;
     private String name;
     private Set<Category> categories;
 
     public Course() {
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
