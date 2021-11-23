@@ -1,6 +1,5 @@
 package com.sofkau.academicsystembackend.collections.program;
 
-import com.sofkau.academicsystembackend.collections.course.Course;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -17,7 +16,8 @@ public class Program {
     private String name;
     @NotBlank(message = "programs must have a starting date")
     private Date startingDate;
-    private List<Course> courses;
+    private Integer duration;
+    private List<CourseTime> courses;
 
     public Program() {
     }
@@ -26,11 +26,12 @@ public class Program {
         this.id = id;
         this.name = name;
         this.startingDate = startingDate;
+        this.duration=0;
         this.courses = new ArrayList<>();
     }
 
     public void addCourse(){
-        this.courses.add(new Course());
+        this.courses.add(new CourseTime());
     }
 
     public String getId() {
@@ -57,11 +58,11 @@ public class Program {
         this.startingDate = startingDate;
     }
 
-    public List<Course> getCourses() {
+    public List<CourseTime> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Course> courses) {
+    public void setCourses(List<CourseTime> courses) {
         this.courses = courses;
     }
 }
