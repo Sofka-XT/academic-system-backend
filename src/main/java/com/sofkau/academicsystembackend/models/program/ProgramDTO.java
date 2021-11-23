@@ -7,13 +7,12 @@ import java.util.List;
 public class ProgramDTO {
     private String id;
     private String name;
-    private Integer programDuration;
     private List<CourseTime> courses;
 
-    public ProgramDTO(String id, String programName, Integer programDuration, List<CourseTime> courses) {
+
+    public ProgramDTO(String id, String name, List<CourseTime> courses) {
         this.id = id;
-        this.name = programName;
-        this.programDuration = programDuration;
+        this.name = name;
         this.courses = courses;
     }
 
@@ -34,14 +33,6 @@ public class ProgramDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getProgramDuration() {
-        return programDuration;
-    }
-
-    public void setProgramDuration(Integer programDuration) {
-        this.programDuration = programDuration;
     }
 
     public List<CourseTime> getCourses() {

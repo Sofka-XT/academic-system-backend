@@ -1,23 +1,21 @@
 package com.sofkau.academicsystembackend.collections.program;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class CourseTime {
 
     private String courseId;
     private String courseName;
-    private Map<String,Integer> categories;
-    private Integer courseDuration;
+    private List<Time> categories;
 
-    public CourseTime() {
-    }
-
-    public CourseTime(String courseId, String courseName, Map<String, Integer> categories, Integer courseDuration) {
+    public CourseTime(String courseId, String courseName, List<Time> categories) {
         this.courseId = courseId;
         this.courseName = courseName;
         this.categories = categories;
-        this.courseDuration = courseDuration;
+    }
+
+    public CourseTime(){
+
     }
 
     public String getCourseId() {
@@ -36,19 +34,11 @@ public class CourseTime {
         this.courseName = courseName;
     }
 
-    public Map<String, Integer> getCategories() {
+    public List<Time> getCategories() {
         return categories;
     }
 
-    public void setCategories(Map<String, Integer> categories) {
+    public void setCategories(List<Time> categories) {
         this.categories = categories;
-    }
-
-    public Integer getCourseDuration() {
-        return courseDuration;
-    }
-
-    public void setCourseDuration(Integer courseDuration) {
-        this.courseDuration = courseDuration;
     }
 }

@@ -13,7 +13,6 @@ public class MapperUtilsProgram {
             var program = new Program();
             program.setId(programDTO.getId());
             program.setName(programDTO.getName());
-            program.setDuration(program.getDuration());
             program.setCourses(programDTO.getCourses());
             return program;
         };
@@ -23,7 +22,6 @@ public class MapperUtilsProgram {
         return program -> new ProgramDTO(
                 program.getId(),
                 program.getName(),
-                program.getDuration(),
                 program.getCourses()
         );
     }

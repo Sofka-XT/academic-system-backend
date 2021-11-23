@@ -14,9 +14,7 @@ public class Program {
     @NotBlank(message = "programs must have a name")
     private String name;
     @NotBlank(message = "programs must have a starting date")
-    private Integer programDuration;
     private List<CourseTime> courses;
-
 
     public Program() {
 
@@ -25,7 +23,6 @@ public class Program {
     public Program(String id, String name, List<CourseTime> courses) {
         this.id = id;
         this.name = name;
-        this.programDuration= 0;
         this.courses = new ArrayList<>();
 
     }
@@ -44,14 +41,6 @@ public class Program {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getDuration() {
-        return programDuration;
-    }
-
-    public void setDuration(Integer duration) {
-        this.programDuration = duration;
     }
 
     public List<CourseTime> getCourses() {
