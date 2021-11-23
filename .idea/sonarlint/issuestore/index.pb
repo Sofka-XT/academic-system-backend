@@ -17,17 +17,9 @@ Xsrc/main/java/com/sofkau/academicsystembackend/usecases/course/GetCourseByIdUse
 Usrc/main/java/com/sofkau/academicsystembackend/routers/course/DeleteCourseRouter.java,d\c\dc06e75cba3dca2265ea2c3a1e860d520a4bbde4
 á
 Wsrc/main/java/com/sofkau/academicsystembackend/usecases/course/CreateCourseUseCase.java,4\d\4d7c7c4a021c354b6b8063d14ff9e71438f84c3c
-Ö
-Usrc/main/java/com/sofkau/academicsystembackend/routers/course/CreateCourseRouter.java,e\3\e383f8f7a50b3607f5da6c52216480a105804d55
 Ç
 Rsrc/main/java/com/sofkau/academicsystembackend/repositories/ProgramRepository.java,b\1\b11e6ec2f3798cde1027fcfa60a49967a5b31594
 É
 Ssrc/main/java/com/sofkau/academicsystembackend/repositories/TrainingRepository.java,f\0\f098443b5d11db331e21f5046ea090ba26b994e4
 Å
 Qsrc/main/java/com/sofkau/academicsystembackend/repositories/CourseRepository.java,8\9\89707f5068be6be9e25ff8e614519a320c7c6804
-y
-Isrc/main/java/com/sofkau/academicsystembackend/configs/WebFluxConfig.java,a\6\a64d0c18f08843512981978830fa0f6cb18c41b4
-
-Osrc/main/java/com/sofkau/academicsystembackend/collections/course/Category.java,c\f\cf839c0dbaa3cfc5cd6a1430f04b63fee932d3bd
-}
-Msrc/main/java/com/sofkau/academicsystembackend/collections/course/Course.java,c\c\cc9bdedaccc867cd55efe8144cc70c92384134eb
