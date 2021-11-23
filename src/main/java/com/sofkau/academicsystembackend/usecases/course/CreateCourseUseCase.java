@@ -19,8 +19,7 @@ public class CreateCourseUseCase implements SaveCourse {
 
     @Override
     public Mono<CourseDTO> apply(CourseDTO courseDTO) {
-        return courseRepository.findById(courseDTO.getId())
-                .switchIfEmpty(courseRepository.save(mapperUtilsCourse.mapperToCourse().apply(courseDTO)))
+        return courseRepository.save(mapperUtilsCourse.mapperToCourse().apply(courseDTO))
                 .map(course ->  mapperUtilsCourse.mapperEntityToCourse().apply(course));
     }
 }
