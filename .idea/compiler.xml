@@ -9,9 +9,15 @@
         <module name="academic-system-backend" />
       </profile>
     </annotationProcessing>
+<<<<<<< HEAD
     <bytecodeTargetLevel target="11">
       <module name="academic-system-backend" target="11" />
       <module name="wrapper" target="11" />
+=======
+    <bytecodeTargetLevel>
+      <module name="academic-system-backend" target="11" />
+      <module name="wrapper" target="1.5" />
+>>>>>>> 2f1b59b2f4877c0d7eb99464e028d81efd1ef612
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
