@@ -21,8 +21,7 @@ public class CreateTrainingRouter {
     @Bean
     public RouterFunction<ServerResponse> createTraining(CreateTrainigUseCase createTrainigUseCase) {
 
-        Function<TrainingDTO, Mono<ServerResponse>> executor = (
-                trainigDTO) -> createTrainigUseCase.apply(trainigDTO)
+        Function<TrainingDTO, Mono<ServerResponse>> executor = (trainigDTO) -> createTrainigUseCase.apply(trainigDTO)
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result));

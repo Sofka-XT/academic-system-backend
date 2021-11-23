@@ -29,8 +29,6 @@ Osrc/main/java/com/sofkau/academicsystembackend/collections/course/Category.java
 Msrc/main/java/com/sofkau/academicsystembackend/collections/course/Course.java,c\c\cc9bdedaccc867cd55efe8144cc70c92384134eb
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-„
-Tsrc/main/java/com/sofkau/academicsystembackend/AcademicSystemBackendApplication.java,9\8\986abf2b7e1f1318cad72e41ef76a46124a9a867
 ƒ
 Ssrc/main/java/com/sofkau/academicsystembackend/repositories/TrainingRepository.java,f\0\f098443b5d11db331e21f5046ea090ba26b994e4
 ‰

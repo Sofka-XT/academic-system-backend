@@ -18,6 +18,7 @@ public class TrainingMapper {
             training.setProgram(trainingDTO.getProgram());
             training.setStartingDate(trainingDTO.getStartingDate());
             training.setApprentices(trainingDTO.getApprentices());
+            training.setCoaches(trainingDTO.getCoaches());
 
             return training;
         };
@@ -32,6 +33,7 @@ public class TrainingMapper {
             trainingDTO.setProgram(training.getProgram());
             trainingDTO.setStartingDate(training.getStartingDate());
             trainingDTO.setApprentices(training.getApprentices());
+            trainingDTO.setCoaches(training.getCoaches());
 
             return trainingDTO;
         };

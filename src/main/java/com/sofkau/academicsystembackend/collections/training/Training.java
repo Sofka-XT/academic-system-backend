@@ -11,20 +11,22 @@ public class Training {
     @Id
     private String trainingId;
     private String name;
-    private Program program;
+    private String programId;
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
+    private List<Coach> coaches;
 
 
     public Training() {
     }
 
-    public Training(String trainingId, String name, Program program, LocalDate startingDate, List<Apprentice> apprentices) {
+    public Training(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches) {
         this.trainingId = trainingId;
         this.name = name;
-        this.program = program;
+        this.programId = programId;
         this.startingDate = startingDate;
         this.apprentices = apprentices;
+        this.coaches = coaches;
     }
 
     public String getTrainingId() {
@@ -43,12 +45,12 @@ public class Training {
         this.name = name;
     }
 
-    public Program getProgram() {
-        return program;
+    public String getProgram() {
+        return programId;
     }
 
-    public void setProgram(Program program) {
-        this.program = program;
+    public void setProgram(String programId) {
+        this.programId = programId;
     }
 
     public LocalDate getStartingDate() {
@@ -65,5 +67,13 @@ public class Training {
 
     public void setApprentices(List<Apprentice> apprentices) {
         this.apprentices = apprentices;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
     }
 }
