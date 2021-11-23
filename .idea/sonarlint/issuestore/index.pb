@@ -23,3 +23,5 @@ Rsrc/main/java/com/sofkau/academicsystembackend/repositories/ProgramRepository.j
 Ssrc/main/java/com/sofkau/academicsystembackend/repositories/TrainingRepository.java,f\0\f098443b5d11db331e21f5046ea090ba26b994e4
 Å
 Qsrc/main/java/com/sofkau/academicsystembackend/repositories/CourseRepository.java,8\9\89707f5068be6be9e25ff8e614519a320c7c6804
+7
+pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec

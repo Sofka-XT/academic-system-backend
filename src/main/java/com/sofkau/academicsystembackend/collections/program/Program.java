@@ -4,9 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Document
@@ -16,23 +14,20 @@ public class Program {
     @NotBlank(message = "programs must have a name")
     private String name;
     @NotBlank(message = "programs must have a starting date")
-    private LocalDate startingDate;
-    private Integer duration;
+    private Integer programDuration;
     private List<CourseTime> courses;
 
+
     public Program() {
+
     }
 
-    public Program(String id, String name, LocalDate startingDate) {
+    public Program(String id, String name, List<CourseTime> courses) {
         this.id = id;
         this.name = name;
-        this.startingDate = startingDate;
-        this.duration=0;
+        this.programDuration= 0;
         this.courses = new ArrayList<>();
-    }
 
-    public void addCourse(){
-        this.courses.add(new CourseTime());
     }
 
     public String getId() {
@@ -51,12 +46,12 @@ public class Program {
         this.name = name;
     }
 
-    public LocalDate getStartingDate() {
-        return startingDate;
+    public Integer getDuration() {
+        return programDuration;
     }
 
-    public void setStartingDate(LocalDate startingDate) {
-        this.startingDate = startingDate;
+    public void setDuration(Integer duration) {
+        this.programDuration = duration;
     }
 
     public List<CourseTime> getCourses() {
