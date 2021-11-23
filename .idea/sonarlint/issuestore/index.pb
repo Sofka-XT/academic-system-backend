@@ -31,12 +31,8 @@ Msrc/main/java/com/sofkau/academicsystembackend/collections/course/Course.java,
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ƒ
 Ssrc/main/java/com/sofkau/academicsystembackend/repositories/TrainingRepository.java,f\0\f098443b5d11db331e21f5046ea090ba26b994e4
-‰
-Ysrc/main/java/com/sofkau/academicsystembackend/routers/training/GetAllTrainingRouter.java,f\e\feb2dd59e220047a082dad6f89c39cc8311886b3
 ‡
 Wsrc/main/java/com/sofkau/academicsystembackend/routers/training/UpdateCourseRouter.java,8\e\8e280cf39b15df77f5315c52bc4ff7a629ac7166
-‹
-[src/main/java/com/sofkau/academicsystembackend/usecases/training/GetAllTrainingUseCase.java,a\a\aa67e27663a22ebab5839664b85fb53de3574bb6
 ‹
 [src/main/java/com/sofkau/academicsystembackend/usecases/training/UpdateTrainingUseCase.java,b\d\bd3f1d75c8a3c8f372d41c875e9726b67264a017
 ‡
