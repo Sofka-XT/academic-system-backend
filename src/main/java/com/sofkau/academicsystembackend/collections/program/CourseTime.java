@@ -5,42 +5,35 @@ import java.util.Map;
 
 public class CourseTime {
 
-    private String id;
-    private String name;
+    private String courseId;
+    private String courseName;
     private Map<String,Integer> categories;
-    private Integer totalTime;
+    private Integer courseDuration;
 
     public CourseTime() {
     }
 
-    public CourseTime(String id, String name, Map<String, Integer> categories) {
-        this.id = id;
-        this.name = name;
+    public CourseTime(String courseId, String courseName, Map<String, Integer> categories, Integer courseDuration) {
+        this.courseId = courseId;
+        this.courseName = courseName;
         this.categories = categories;
+        this.courseDuration = courseDuration;
     }
 
-    public void addTime(String name, Integer time){
-        this.categories.put(name, time);
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void SumTime(){
-        this.totalTime=this.categories.values().stream().reduce(0, Integer::sum);
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
-    public String getId() {
-        return id;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public Map<String, Integer> getCategories() {
@@ -49,5 +42,13 @@ public class CourseTime {
 
     public void setCategories(Map<String, Integer> categories) {
         this.categories = categories;
+    }
+
+    public Integer getCourseDuration() {
+        return courseDuration;
+    }
+
+    public void setCourseDuration(Integer courseDuration) {
+        this.courseDuration = courseDuration;
     }
 }
