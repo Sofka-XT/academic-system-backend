@@ -34,15 +34,11 @@ Tsrc/main/java/com/sofkau/academicsystembackend/AcademicSystemBackendApplication
 ƒ
 Ssrc/main/java/com/sofkau/academicsystembackend/repositories/TrainingRepository.java,f\0\f098443b5d11db331e21f5046ea090ba26b994e4
 ‰
-Ysrc/main/java/com/sofkau/academicsystembackend/routers/training/DeleteTrainingRouter.java,e\f\ef6d5ecf3bac73df65c6cf48df4ecc5f7e23ae11
-‰
 Ysrc/main/java/com/sofkau/academicsystembackend/routers/training/GetAllTrainingRouter.java,f\e\feb2dd59e220047a082dad6f89c39cc8311886b3
 Š
 Zsrc/main/java/com/sofkau/academicsystembackend/routers/training/GetTrainingByIdRouter.java,9\7\97c6bb962d381ae76540ec76dca211cf8b028818
 ‡
 Wsrc/main/java/com/sofkau/academicsystembackend/routers/training/UpdateCourseRouter.java,8\e\8e280cf39b15df77f5315c52bc4ff7a629ac7166
-‹
-[src/main/java/com/sofkau/academicsystembackend/usecases/training/DeleteTrainingUseCase.java,e\0\e00180be8459cec6f6a088a18d7c33786b681f91
 ‹
 [src/main/java/com/sofkau/academicsystembackend/usecases/training/GetAllTrainingUseCase.java,a\a\aa67e27663a22ebab5839664b85fb53de3574bb6
 Œ
