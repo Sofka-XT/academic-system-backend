@@ -1,7 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.listactivetraining;
 
 
-import com.sofkau.academicsystembackend.collections.training.Training;
+import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 @Service
 @Validated
-public class GetActiveTrainingsUseCase implements Supplier<Flux<Training>> {
+public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
 
     Calendar cal = Calendar.getInstance();
 
@@ -27,7 +27,7 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<Training>> {
     }
 
     @Override
-    public Flux<Training> get() {
+    public Flux<TrainingDTO> get() {
         return trainingRepository.findAll().filter(
                 training -> {
                     cal.setTime(training.getProgram().getStartingDate());
@@ -37,6 +37,6 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<Training>> {
                     return new Date().before(
                             cal.getTime());
                 }
-        );
+        ).map(mapperUtilsActiveTraining.mapperEntityToTraining());
     }
 }
