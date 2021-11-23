@@ -1,5 +1,6 @@
 package com.sofkau.academicsystembackend.collections.training;
 
+import com.sofkau.academicsystembackend.collections.program.Program;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

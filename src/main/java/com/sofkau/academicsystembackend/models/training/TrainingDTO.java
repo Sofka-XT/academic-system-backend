@@ -1,7 +1,11 @@
 package com.sofkau.academicsystembackend.models.training;
 
+import com.sofkau.academicsystembackend.collections.program.Program;
+import com.sofkau.academicsystembackend.collections.training.Apprentice;
+
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class TrainingDTO {
