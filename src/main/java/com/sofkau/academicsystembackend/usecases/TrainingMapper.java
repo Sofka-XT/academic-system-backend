@@ -1,6 +1,7 @@
-package com.sofkau.academicsystembackend.models.training;
+package com.sofkau.academicsystembackend.usecases;
 
 import com.sofkau.academicsystembackend.collections.training.Training;
+import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
