@@ -11,11 +11,11 @@ import java.util.function.Function;
 @Service
 @Validated
 public class DeleteTrainingUseCase implements Function<String, Mono<Void>>{
-private TrainingRepository trainingRepository;
+    private TrainingRepository trainingRepository;
 
-public DeleteTrainingUseCase(TrainingRepository trainingRepository){
-    this.trainingRepository = trainingRepository;
-}
+    public DeleteTrainingUseCase(TrainingRepository trainingRepository){
+        this.trainingRepository = trainingRepository;
+    }
 
     @Override
     public Mono<Void> apply(String id) {
