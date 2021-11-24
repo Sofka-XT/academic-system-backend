@@ -22,7 +22,7 @@ public class UpdateProgramUseCase {
     }
 
     public Mono<ProgramDTO> updateProgram(ProgramDTO programDTO){
-        if (programDTO.getName().isEmpty()) {
+        if (programDTO.getName().isEmpty()){
             throw new IllegalArgumentException("The name cannot be empty");
         }
         return  programRepository.existsById(programDTO.getId()).flatMap(programExists->{
