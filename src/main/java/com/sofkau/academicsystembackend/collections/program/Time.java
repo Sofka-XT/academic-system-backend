@@ -39,4 +39,5 @@ public class Time {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
 }

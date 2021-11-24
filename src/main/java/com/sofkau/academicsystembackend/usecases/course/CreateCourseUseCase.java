@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 @Service
 @Validated
@@ -22,6 +24,7 @@ public class CreateCourseUseCase implements SaveCourse {
 
     @Override
     public Mono<CourseDTO> apply(CourseDTO courseDTO) {
+
         Mono<CourseDTO> error = dataValidation(courseDTO);
         if (error != null) return error;
         List<Integer> count = countRulesPresent(courseDTO);
@@ -66,5 +69,6 @@ public class CreateCourseUseCase implements SaveCourse {
             }
         });
         return isValid;
+
     }
 }
