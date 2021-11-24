@@ -1,14 +1,6 @@
-target/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
-release.properties
-dependency-reduced-pom.xml
-buildNumber.properties
-.mvn/timing.properties
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+.idea/
+/academic-system-backend.iml
+=======
 # Created by https://www.toptal.com/developers/gitignore/api/intellij+all,java,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij+all,java,maven
 
@@ -150,4 +142,3 @@ buildNumber.properties
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all,java,maven
-
