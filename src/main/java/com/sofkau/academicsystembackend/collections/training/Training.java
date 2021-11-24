@@ -76,4 +76,16 @@ public class Training {
     public void setCoaches(List<Coach> coaches) {
         this.coaches = coaches;
     }
+
+    @Override
+    public String toString() {
+        return "Training{" +
+                "trainingId='" + trainingId + '\'' +
+                ", name='" + name + '\'' +
+                ", programId='" + programId + '\'' +
+                ", startingDate=" + startingDate +
+                ", apprentices=" + apprentices +
+                ", coaches=" + coaches +
+                '}';
+    }
 }

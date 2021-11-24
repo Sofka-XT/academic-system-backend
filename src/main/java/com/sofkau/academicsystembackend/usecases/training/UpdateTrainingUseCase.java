@@ -25,9 +25,8 @@ public class UpdateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     @Override
     public Mono<TrainingDTO> apply(TrainingDTO trainingDTO) {
-        Objects.requireNonNull(trainingDTO);
-        return repository
-                .save(mapper.mapperToTraining().apply(trainingDTO))
-                .map(training -> mapper.mapperEntityToTrainingDTO().apply(training));
+
+        return repository.save(mapper.mapperToTraining().apply(trainingDTO))
+               .map(training -> mapper.mapperEntityToTrainingDTO().apply(training));
     }
 }

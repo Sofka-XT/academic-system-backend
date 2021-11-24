@@ -22,6 +22,7 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     @Override
     public Mono<TrainingDTO> apply(TrainingDTO trainingDTO) {
+
         return trainingRepository.save(trainingMapper.mapperToTraining()
                         .apply(trainingDTO))
                 .map(training -> trainingMapper.mapperEntityToTrainingDTO()

@@ -18,22 +18,23 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
+
 
 @SpringBootTest
 class UpdateTrainingUseCaseTest {
 
     @MockBean
-    private TrainingRepository repository;
-
-    @Autowired
-    private TrainingMapper mapper;
-
+    private TrainingRepository trainingRepository;
 
     @SpyBean
     private UpdateTrainingUseCase updateTrainingUseCase;
 
+    @Autowired
+    private TrainingMapper mapper;
+
     @Test
-    @DisplayName("Test para actualizar un training")
+    @DisplayName("Actualizar training test")
     void updateTrainingTest(){
         Coach coach1 = new Coach();
         coach1.setId("12iwefya0p4ep984");
@@ -68,20 +69,24 @@ class UpdateTrainingUseCaseTest {
         apprentices.add(apprentice2);
 
         TrainingDTO trainingDTO = new TrainingDTO();
-        trainingDTO.setTrainingId("ckvjsafdiñl123");
+        trainingDTO.setTrainingId("3136594sdsda656");
         trainingDTO.setName("Training de desarrollo");
         trainingDTO.setProgram("123ffser43");
         trainingDTO.setStartingDate(LocalDate.now());
         trainingDTO.setCoaches(coaches);
         trainingDTO.setApprentices(apprentices);
 
-        Mockito.when(repository.save(mapper.mapperToTraining().apply(trainingDTO)))
+        Mockito.when(trainingRepository.save(any()))
                 .thenReturn(Mono.just(mapper.mapperToTraining().apply(trainingDTO)));
-        System.out.println("Test");
-        var result = updateTrainingUseCase.apply(trainingDTO);
-        System.out.println(result.block().getTrainingId());
 
-        Assertions.assertEquals("ckvjsafdiñl123", result.block().getTrainingId());
+        var result = updateTrainingUseCase.apply(trainingDTO);
+
+
+        Assertions.assertEquals("3136594sdsda656", result.block().getTrainingId());
+        Assertions.assertEquals("Training de desarrollo", result.block().getName());
+        Assertions.assertEquals("123ffser43", result.block().getProgram());
+        Assertions.assertEquals(coaches, result.block().getCoaches());
+        Assertions.assertEquals(apprentices, result.block().getApprentices());
     }
 
 }
