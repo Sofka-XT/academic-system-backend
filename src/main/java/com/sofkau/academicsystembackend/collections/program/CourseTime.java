@@ -1,61 +1,44 @@
 package com.sofkau.academicsystembackend.collections.program;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 public class CourseTime {
 
-    private String id;
-    private String name;
-    private Map<String,Integer> categories;
-    private Integer totalTime;
+    private String courseId;
+    private String courseName;
+    private List<Time> categories;
 
-    public CourseTime() {
-    }
-
-    public CourseTime(String id, String name, Map<String, Integer> categories) {
-        this.id = id;
-        this.name = name;
+    public CourseTime(String courseId, String courseName, List<Time> categories) {
+        this.courseId = courseId;
+        this.courseName = courseName;
         this.categories = categories;
     }
 
-    public void addTime(String name, Integer time){
-        this.categories.put(name, time);
+    public CourseTime(){
+
     }
 
-    public void SumTime(){
-        this.totalTime=this.categories.values().stream().reduce(0, Integer::sum);
+    public String getCourseId() {
+        return courseId;
     }
 
-    public String getId() {
-        return id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public String getName() {
-        return name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Map<String, Integer> getCategories() {
+    public List<Time> getCategories() {
         return categories;
     }
 
-    public void setCategories(Map<String, Integer> categories) {
+    public void setCategories(List<Time> categories) {
         this.categories = categories;
-    }
-
-    public Integer getTotalTime() {
-        return totalTime;
-    }
-
-    public void setTotalTime(Integer totalTime) {
-        this.totalTime = totalTime;
     }
 }

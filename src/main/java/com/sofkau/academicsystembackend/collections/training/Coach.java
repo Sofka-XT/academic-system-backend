@@ -2,20 +2,20 @@ package com.sofkau.academicsystembackend.collections.training;
 
 import java.util.Objects;
 
-public class Apprentice{
+public class Coach {
     private String id;
     private String name;
     private String phoneNumber;
     private String emailAddress;
 
-    public Apprentice() {
+    public Coach() {
     }
 
-    public Apprentice(String id) {
+    public Coach(String id) {
         this.id = id;
     }
 
-    public Apprentice(String id, String name, String phoneNumber, String emailAddress) {
+    public Coach(String id, String name, String phoneNumber, String emailAddress) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -54,13 +54,12 @@ public class Apprentice{
         this.emailAddress = emailAddress;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Apprentice that = (Apprentice) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(emailAddress, that.emailAddress);
+        Coach coach = (Coach) o;
+        return Objects.equals(id, coach.id) && Objects.equals(name, coach.name) && Objects.equals(phoneNumber, coach.phoneNumber) && Objects.equals(emailAddress, coach.emailAddress);
     }
 
     @Override

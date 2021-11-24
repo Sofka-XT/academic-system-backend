@@ -1,7 +1,9 @@
 package com.sofkau.academicsystembackend.usecases.listactivetraining;
 
 
+import com.sofkau.academicsystembackend.collections.program.Time;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
+import com.sofkau.academicsystembackend.repositories.ProgramRepository;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
@@ -19,10 +21,12 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
     Calendar cal = Calendar.getInstance();
 
     private final TrainingRepository trainingRepository;
+    private final ProgramRepository programRepository;
     private final MapperUtilsActiveTraining mapperUtilsActiveTraining;
 
-    public GetActiveTrainingsUseCase(TrainingRepository trainingRepository, MapperUtilsActiveTraining mapperUtilsActiveTraining) {
+    public GetActiveTrainingsUseCase(TrainingRepository trainingRepository, ProgramRepository programRepository,MapperUtilsActiveTraining mapperUtilsActiveTraining) {
         this.trainingRepository = trainingRepository;
+        this.programRepository = programRepository;
         this.mapperUtilsActiveTraining = mapperUtilsActiveTraining;
     }
 
@@ -30,12 +34,17 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
     public Flux<TrainingDTO> get() {
         return trainingRepository.findAll().filter(
                 training -> {
-                    cal.setTime(training.getProgram().getStartingDate());
-                    cal.add(Calendar.DATE, training.getProgram().getCourses().stream().map(
-                            (courseTime) -> courseTime.getTotalTime()
-                    ).reduce(0, Integer::sum));
-                    return new Date().before(
-                            cal.getTime());
+                    var program = programRepository.findById(training.getProgram());
+                    program.subscribe(p ->
+                    {
+                        cal.setTime(p.getStartingDate());
+                        cal.add(Calendar.DATE, p.getCourses().stream().map(
+                                courseTime -> courseTime.getCategories().stream()
+                                        .map(Time::getDays).reduce(0, Integer::sum)
+                        ).reduce(0, Integer::sum));
+                    });
+
+                    return new Date().before(cal.getTime());
                 }
         ).map(mapperUtilsActiveTraining.mapperEntityToTraining());
     }

@@ -1,24 +1,21 @@
 package com.sofkau.academicsystembackend.models.training;
 
-import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
+import com.sofkau.academicsystembackend.collections.training.Coach;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.List;
 
 
 public class TrainingDTO {
-    @NotBlank(message = "This input can't be blank")
     private String trainingId;
-    @NotBlank(message = "This input can't be blank")
     private String name;
-    @NotBlank(message = "This input can't be blank")
-    private Program program;
-    @NotBlank(message = "This input can't be blank")
+    private String programId;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate startingDate;
-    @NotBlank(message = "This input can't be blank")
     private List<Apprentice> apprentices;
+    private List<Coach> coaches;
 
 
     public TrainingDTO() {
@@ -28,13 +25,16 @@ public class TrainingDTO {
         this.trainingId = trainingId;
     }
 
-    public TrainingDTO(String trainingId, String name, Program program, LocalDate startingDate, List<Apprentice> apprentices) {
+    public TrainingDTO(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches) {
         this.trainingId = trainingId;
         this.name = name;
-        this.program = program;
+        this.programId = programId;
         this.startingDate = startingDate;
         this.apprentices = apprentices;
+        this.coaches = coaches;
     }
+
+
 
     public String getTrainingId() {
         return trainingId;
@@ -52,12 +52,12 @@ public class TrainingDTO {
         this.name = name;
     }
 
-    public Program getProgram() {
-        return program;
+    public String getProgram() {
+        return programId;
     }
 
-    public void setProgram(Program program) {
-        this.program = program;
+    public void setProgram(String programId) {
+        this.programId = programId;
     }
 
     public LocalDate getStartingDate() {
@@ -74,5 +74,25 @@ public class TrainingDTO {
 
     public void setApprentices(List<Apprentice> apprentices) {
         this.apprentices = apprentices;
+    }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
+
+    public void setCoaches(List<Coach> coaches) {
+        this.coaches = coaches;
+    }
+
+    @Override
+    public String toString() {
+        return "TrainingDTO{" +
+                "trainingId='" + trainingId + '\'' +
+                ", name='" + name + '\'' +
+                ", programId='" + programId + '\'' +
+                ", startingDate=" + startingDate +
+                ", apprentices=" + apprentices +
+                ", coaches=" + coaches +
+                '}';
     }
 }

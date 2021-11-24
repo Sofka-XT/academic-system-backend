@@ -12,11 +12,12 @@ public class MapperUtilsActiveTraining {
     public Function<TrainingDTO, Training>mapperToTraining(){
         return trainingDTO -> {
             var training = new Training();
-            training.setTrainingId(training.getTrainingId());
-            training.setName(training.getName());
-            training.setProgram(training.getProgram());
-            training.setStartingDate(training.getStartingDate());
-            training.setApprentices(training.getApprentices());
+            training.setTrainingId(trainingDTO.getTrainingId());
+            training.setName(trainingDTO.getName());
+            training.setProgram(trainingDTO.getProgram());
+            training.setStartingDate(trainingDTO.getStartingDate());
+            training.setApprentices(trainingDTO.getApprentices());
+            training.setCoaches(trainingDTO.getCoaches());
             return training;
         };
     }
@@ -26,7 +27,8 @@ public class MapperUtilsActiveTraining {
                 training.getName(),
                 training.getProgram(),
                 training.getStartingDate(),
-                training.getApprentices()
+                training.getApprentices(),
+                training.getCoaches()
         );
     }
 }

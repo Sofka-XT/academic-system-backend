@@ -1,18 +1,18 @@
 package com.sofkau.academicsystembackend.models.program;
 
-import java.util.Date;
+import com.sofkau.academicsystembackend.collections.program.CourseTime;
+
 import java.util.List;
 
 public class ProgramDTO {
     private String id;
     private String name;
-    private Date startingDate;
-    private List<CourseTimeDTO> courses;
+    private List<CourseTime> courses;
 
-    public ProgramDTO(String id, String name, Date startingDate, List<CourseTimeDTO> courses) {
+
+    public ProgramDTO(String id, String name, List<CourseTime> courses) {
         this.id = id;
         this.name = name;
-        this.startingDate = startingDate;
         this.courses = courses;
     }
 
@@ -35,19 +35,11 @@ public class ProgramDTO {
         this.name = name;
     }
 
-    public Date getStartingDate() {
-        return startingDate;
-    }
-
-    public void setStartingDate(Date startingDate) {
-        this.startingDate = startingDate;
-    }
-
-    public List<CourseTimeDTO> getCourses() {
+    public List<CourseTime> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<CourseTimeDTO> courses) {
+    public void setCourses(List<CourseTime> courses) {
         this.courses = courses;
     }
 }
