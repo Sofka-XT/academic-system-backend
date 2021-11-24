@@ -25,10 +25,11 @@ public class UpdateCourseUseCase implements SaveCourse{
         Objects.requireNonNull(courseDTO, "Este campo no debe ser nulo");
         return getCourseByIdUseCase.apply(courseDTO.getId())
                 .flatMap(courseFoundDTO -> {
-                    if(courseFoundDTO.getName() != null){
+                    System.out.println(courseFoundDTO.getName());
+                    if(!Objects.isNull(courseFoundDTO.getName())){
                         return createCourseUseCase.apply(courseDTO);
                     }
-                    return Mono.just(new CourseDTO(null,null,null));
+                    return Mono.error(new IllegalArgumentException("El curso con el id " + courseDTO.getId()+ " no existe"));
                 });
     }
 }
