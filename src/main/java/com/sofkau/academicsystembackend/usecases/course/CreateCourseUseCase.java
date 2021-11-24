@@ -22,26 +22,42 @@ public class CreateCourseUseCase implements SaveCourse {
 
     @Override
     public Mono<CourseDTO> apply(CourseDTO courseDTO) {
+        Mono<CourseDTO> error = dataValidation(courseDTO);
+        if (error != null) return error;
         List<Integer> count = countRulesPresent(courseDTO);
         List<Boolean> isValid = isValidSave(count);
         if (isValid.get(0)) {
             return courseRepository.save(mapperUtilsCourse.mapperToCourse().apply(courseDTO))
                     .map(course -> mapperUtilsCourse.mapperEntityToCourse().apply(course));
-        } else {
-            return Mono.error(new IllegalArgumentException("Las reglas solo deben ser tres por categoria"));
         }
+        return Mono.error(new IllegalArgumentException("Las reglas solo deben ser tres por categoria"));
+    }
+
+    private Mono<CourseDTO> dataValidation(CourseDTO courseDTO) {
+        if (courseDTO.getCategories() == null || courseDTO.getCategories().isEmpty()) {
+            return Mono.error(new IllegalArgumentException("Debe existir al menos una categoria"));
+        }
+        if (courseDTO.getName() == null || courseDTO.getName() == "") {
+            return Mono.error(new IllegalArgumentException("el curso debe tener el nombre"));
+        }
+        return null;
     }
 
     private List<Integer> countRulesPresent(CourseDTO courseDTO) {
         List<Integer> count = new ArrayList<>();
         courseDTO.getCategories().forEach(category -> {
-            count.add(category.getRules().size());
+            if (category.getRules() != null && !category.getRules().isEmpty()) {
+                count.add(category.getRules().size());
+            } else {
+                count.add(0);
+            }
         });
         return count;
     }
 
     private List<Boolean> isValidSave(List<Integer> count) {
         List<Boolean> isValid = new ArrayList<>();
+        isValid.add(0, false);
         count.forEach(integer -> {
             if (integer == 3) {
                 isValid.add(0, true);

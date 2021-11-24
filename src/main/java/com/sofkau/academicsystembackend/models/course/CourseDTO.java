@@ -9,9 +9,7 @@ import java.util.Set;
 public class CourseDTO {
 
     private String id;
-    @NotBlank(message = "el nombre del curso no puede estar en blanco")
     private String name;
-    @NotEmpty(message = "Debe existir al menos una categoria")
     private Set<Category> categories;
 
     public CourseDTO(String id, String name, Set<Category> categories) {
