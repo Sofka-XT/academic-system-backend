@@ -4,6 +4,7 @@ import com.sofkau.academicsystembackend.collections.course.*;
 import com.sofkau.academicsystembackend.models.course.CourseDTO;
 import com.sofkau.academicsystembackend.repositories.CourseRepository;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,6 +26,7 @@ class GetCourseByIdUseCaseTest {
     CourseRepository courseRepository;
 
     @Test
+    @DisplayName("test para validar el listar cursos por nombre de manera correcta")
     void getCoursesByIdUseCaseTest() {
 
         Set<Category> categories = new HashSet<>();
