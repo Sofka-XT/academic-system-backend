@@ -18,8 +18,6 @@ import java.util.function.Supplier;
 @Validated
 public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
 
-    Calendar cal = Calendar.getInstance();
-
     private final TrainingRepository trainingRepository;
     private final ProgramRepository programRepository;
     private final MapperUtilsActiveTraining mapperUtilsActiveTraining;
@@ -34,17 +32,13 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
     public Flux<TrainingDTO> get() {
         return trainingRepository.findAll().filter(
                 training -> {
-                    var program = programRepository.findById(training.getProgram());
-                    program.subscribe(p ->
-                    {
-                        cal.setTime(p.getStartingDate());
-                        cal.add(Calendar.DATE, p.getCourses().stream().map(
-                                courseTime -> courseTime.getCategories().stream()
+                    var program = programRepository.findById(training.getProgram()).block();
+                    var end_date = training.getStartingDate().plusDays(program.getCourses().stream()
+                            .map(courseTime -> courseTime.getCategories().stream()
                                         .map(Time::getDays).reduce(0, Integer::sum)
                         ).reduce(0, Integer::sum));
-                    });
 
-                    return new Date().before(cal.getTime());
+                    return LocalDate.now().isBefore(end_date);
                 }
         ).map(mapperUtilsActiveTraining.mapperEntityToTraining());
     }
