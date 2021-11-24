@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public class Program {
     private String id;
     @NotBlank(message = "programs must have a name")
     private String name;
+    @Size(min = 4,max = 100,message = "Program names must have a valid size")
     @NotBlank(message = "programs must have a starting date")
     private List<CourseTime> courses;
 
