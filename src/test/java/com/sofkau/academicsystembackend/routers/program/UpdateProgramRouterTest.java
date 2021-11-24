@@ -5,7 +5,6 @@ import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.collections.program.Time;
 import com.sofkau.academicsystembackend.models.program.ProgramDTO;
 import com.sofkau.academicsystembackend.repositories.ProgramRepository;
-import com.sofkau.academicsystembackend.usecases.course.UpdateCourseUseCase;
 import com.sofkau.academicsystembackend.usecases.program.MapperUtilsProgram;
 import com.sofkau.academicsystembackend.usecases.program.UpdateProgramUseCase;
 import org.junit.jupiter.api.Test;
