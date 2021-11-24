@@ -1,5 +1,7 @@
 package com.sofkau.academicsystembackend.collections.training;
 
+import java.util.Objects;
+
 public class Apprentice{
     private String id;
     private String name;
@@ -50,5 +52,19 @@ public class Apprentice{
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Apprentice that = (Apprentice) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(phoneNumber, that.phoneNumber) && Objects.equals(emailAddress, that.emailAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, phoneNumber, emailAddress);
     }
 }
