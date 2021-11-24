@@ -3,7 +3,6 @@ package com.sofkau.academicsystembackend.routers.training;
 
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import com.sofkau.academicsystembackend.usecases.training.UpdateTrainingUseCase;
-import io.netty.channel.ServerChannelRecvByteBufAllocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
