@@ -18,7 +18,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class CreateCourseRouter {
     @Bean
-    public RouterFunction<ServerResponse> create(CreateCourseUseCase createCourseUseCase) {
+    public RouterFunction<ServerResponse> createCourse(CreateCourseUseCase createCourseUseCase) {
         Function<CourseDTO, Mono<ServerResponse>> executor = courseDTO -> createCourseUseCase.apply(courseDTO)
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
