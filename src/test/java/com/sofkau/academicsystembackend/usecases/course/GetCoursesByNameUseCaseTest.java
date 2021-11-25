@@ -33,8 +33,8 @@ class GetCoursesByNameUseCaseTest {
 
         rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
-        categories.add(new Category("testCategorie1", rules));
-        categories.add(new Category("testCategorie2", rules));
+        categories.add(new Category( "testCategorie1", rules));
+        categories.add(new Category( "testCategorie2", rules));
 
         var courseDTO = new CourseDTO("1", "testCourse1", categories);
         var course = new Course();

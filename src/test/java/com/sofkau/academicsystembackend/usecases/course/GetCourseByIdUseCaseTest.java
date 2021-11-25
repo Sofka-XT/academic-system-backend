@@ -10,7 +10,6 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.HashSet;
@@ -34,7 +33,7 @@ class GetCourseByIdUseCaseTest {
 
         rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
-        categories.add(new Category("testCategorie1", rules));
+        categories.add(new Category( "testCategorie1", rules));
         categories.add(new Category("testCategorie2", rules));
 
         var courseDTO = new CourseDTO("1", "testCourse1", categories);

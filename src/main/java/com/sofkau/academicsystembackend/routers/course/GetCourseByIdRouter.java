@@ -2,7 +2,6 @@ package com.sofkau.academicsystembackend.routers.course;
 
 import com.sofkau.academicsystembackend.models.course.CourseDTO;
 import com.sofkau.academicsystembackend.usecases.course.GetCourseByIdUseCase;
-import com.sofkau.academicsystembackend.usecases.course.GetCoursesByNameUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;

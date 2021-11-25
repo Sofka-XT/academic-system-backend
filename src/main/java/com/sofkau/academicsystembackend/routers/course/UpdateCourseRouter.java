@@ -1,7 +1,6 @@
 package com.sofkau.academicsystembackend.routers.course;
 
 import com.sofkau.academicsystembackend.models.course.CourseDTO;
-import com.sofkau.academicsystembackend.usecases.course.CreateCourseUseCase;
 import com.sofkau.academicsystembackend.usecases.course.UpdateCourseUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

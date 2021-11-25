@@ -42,7 +42,7 @@ class CreateCourseUseCaseTest {
 
         course.setId("C-111");
         course.setName("programacion reactiva y funcional");
-        course.setCategories(Set.of(new Category("programación funcional", Set.of(
+        course.setCategories(Set.of(new Category( "programación funcional", Set.of(
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.WARNING, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.SUCCESS, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))))));
@@ -66,7 +66,7 @@ class CreateCourseUseCaseTest {
     @DisplayName("test para validar la cuando falla la creación de un curso")
     void createCourseNoSeccessTest() {
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
-                Set.of(new Category("programación funcional",
+                Set.of(new Category( "programación funcional",
                         Set.of(new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                                 new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
@@ -75,7 +75,7 @@ class CreateCourseUseCaseTest {
 
         course.setId("C-111");
         course.setName("programacion reactiva y funcional");
-        course.setCategories(Set.of(new Category("programación funcional", Set.of(
+        course.setCategories(Set.of(new Category( "programación funcional", Set.of(
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "<", "70", new Feedback("mejoracampeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
