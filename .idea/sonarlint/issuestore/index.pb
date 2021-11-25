@@ -15,8 +15,6 @@ Xsrc/main/java/com/sofkau/academicsystembackend/usecases/course/GetCourseByIdUse
 Usrc/main/java/com/sofkau/academicsystembackend/routers/course/DeleteCourseRouter.java,d\c\dc06e75cba3dca2265ea2c3a1e860d520a4bbde4
 9
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-
-Osrc/main/java/com/sofkau/academicsystembackend/collections/course/Category.java,c/f/cf839c0dbaa3cfc5cd6a1430f04b63fee932d3bd
 }
 Msrc/main/java/com/sofkau/academicsystembackend/collections/course/Course.java,c/c/cc9bdedaccc867cd55efe8144cc70c92384134eb
 {
