@@ -32,6 +32,7 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
     public Flux<TrainingDTO> get() {
         return trainingRepository.findAll().filter(
                 training -> {
+                    programRepository.findById(training.getProgram()).subscribe();
                     var program = programRepository.findById(training.getProgram()).block();
                     var end_date = training.getStartingDate().plusDays(program.getCourses().stream()
                             .map(courseTime -> courseTime.getCategories().stream()
