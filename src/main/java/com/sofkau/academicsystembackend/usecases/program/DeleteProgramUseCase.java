@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -20,6 +21,13 @@ public class DeleteProgramUseCase implements Function<String, Mono<Void>> {
     @Override
     public Mono<Void> apply(String id) {
         Objects.requireNonNull(id, "The ID is required");
-        return programRepository.deleteById(id);
+        return programRepository.existsById(id).flatMap(programExists ->{
+            if(programExists){
+                return programRepository.deleteById(id);
+            }else{
+                throw new NoSuchElementException("Program cannot be deleted because It does not exist");
+            }
+        });
+
     }
 }
