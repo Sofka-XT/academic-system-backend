@@ -22,6 +22,9 @@ class UpdateCourseUseCaseTest {
     @SpyBean
     UpdateCourseUseCase updateCourseUseCase;
 
+    @SpyBean
+    GetCourseByIdUseCase getCourseByIdUseCase;
+
     @MockBean
     CourseRepository courseRepository;
 

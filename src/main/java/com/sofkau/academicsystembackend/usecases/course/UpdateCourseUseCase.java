@@ -6,6 +6,7 @@ import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 @Service
 @Validated
@@ -22,13 +23,15 @@ public class UpdateCourseUseCase implements SaveCourse{
     @Override
     public Mono<CourseDTO> apply(CourseDTO courseDTO) {
         Objects.requireNonNull(courseDTO, "Este campo no debe ser nulo");
+
         return getCourseByIdUseCase.apply(courseDTO.getId())
                 .flatMap(courseFoundDTO -> {
-                    System.out.println(courseFoundDTO.getName());
+
                     if(!Objects.isNull(courseFoundDTO.getName())){
                         return createCourseUseCase.apply(courseDTO);
                     }
-                    return Mono.error(new IllegalArgumentException("El curso con el id " + courseDTO.getId()+ " no existe"));
+
+                    return Mono.error(new IllegalArgumentException("El curso no existe"));
                 });
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
 
+import java.util.Map;
 import java.util.function.Function;
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.*;
@@ -18,15 +19,20 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class UpdateCourseRouter {
 
     @Bean
-    public RouterFunction<ServerResponse> update(UpdateCourseUseCase createCourseUseCase) {
-        Function<CourseDTO, Mono<ServerResponse>> executor = courseDTO -> createCourseUseCase.apply(courseDTO)
+    public RouterFunction<ServerResponse> update(UpdateCourseUseCase updateCourseUseCase) {
+        Function<CourseDTO, Mono<ServerResponse>> executor = courseDTO -> updateCourseUseCase.apply(courseDTO)
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .bodyValue(result));
+                        .bodyValue(result))
+                .onErrorResume(e -> Mono.just(Map.of("error: " , e.getMessage()))
+                        .flatMap(s -> ServerResponse.badRequest()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .bodyValue(s)));
 
         return route(
                 PUT("/course/update"),
                 request -> request.bodyToMono(CourseDTO.class).flatMap(executor)
+
         );
     }
 

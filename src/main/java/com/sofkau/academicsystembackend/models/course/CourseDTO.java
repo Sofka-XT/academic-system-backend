@@ -8,6 +8,8 @@ public class CourseDTO {
 
     private String id;
     private String name;
+    private String name;
+
     private Set<Category> categories;
 
     public CourseDTO(String id, String name, Set<Category> categories) {

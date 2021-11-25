@@ -10,8 +10,8 @@ public class Category {
 
     private String id;
     private String name;
-    private Set<Rule> rules;
 
+    private Set<Rule> rules;
 
     public Category( String name, Set<Rule> rules) {
         this.id = UUID.randomUUID().toString();
@@ -35,11 +35,13 @@ public class Category {
         this.name = name;
     }
 
+
     public Set<Rule> getRules() {
         return rules;
     }
 
     public void setRules(Set<Rule> rules) {
+
         this.rules = rules;
     }
 
