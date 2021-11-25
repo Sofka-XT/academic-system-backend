@@ -1,6 +1,5 @@
 package com.sofkau.academicsystembackend.usecases.course;
 
-
 import com.sofkau.academicsystembackend.collections.course.*;
 import com.sofkau.academicsystembackend.models.course.CourseDTO;
 import com.sofkau.academicsystembackend.repositories.CourseRepository;
@@ -12,31 +11,29 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
+
 import java.util.HashSet;
 import java.util.Set;
 
 @SpringBootTest
-class GetAllCourseUseCaseTest {
+class GetCoursesByNameUseCaseTest {
 
     @SpyBean
-    GetAllCourseUseCase getAllCourseUseCase;
+    GetCoursesByNameUseCase getCoursesByNameUseCase;
 
     @MockBean
     CourseRepository courseRepository;
 
     @Test
-
-    @DisplayName("test para validar el listar todos los cursos de manera correcta")
-    void getAllCourseUseCaseTest() {
-
+    @DisplayName("test para validar el listar un curso por id de manera correcta")
+    void getCoursesByNameUseCaseTest() {
 
         Set<Category> categories = new HashSet<>();
         Set<Rule> rules = new HashSet<>();
 
         rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
-
-        categories.add(new Category("testCategorie1", rules));
+        categories.add(new Category( "testCategorie1", rules));
         categories.add(new Category( "testCategorie2", rules));
 
         var courseDTO = new CourseDTO("1", "testCourse1", categories);
@@ -48,14 +45,10 @@ class GetAllCourseUseCaseTest {
 
         Mockito.when(courseRepository.findAll()).thenReturn(Flux.just(course));
 
-        var result = getAllCourseUseCase.get();
+        var result = getCoursesByNameUseCase.apply("testCourse1");
 
-
-        Assertions.assertEquals(result.blockFirst().getName(), "testCourse1");
-        Assertions.assertEquals(result.blockFirst().getCategories().size(), 2);
+        Assertions.assertEquals(result.count().block(), 1L);
 
     }
-
-
 
 }

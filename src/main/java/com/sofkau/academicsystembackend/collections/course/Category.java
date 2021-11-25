@@ -1,15 +1,30 @@
 package com.sofkau.academicsystembackend.collections.course;
 
-import java.util.Map;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Set;
+import java.util.UUID;
+
+@Document
 public class Category {
+
+    private String id;
     private String name;
-    private Map<String, String> rules;
 
+    private Set<Rule> rules;
 
-    public Category(String name, Map<String, String> rules) {
+    public Category( String name, Set<Rule> rules) {
+        this.id = UUID.randomUUID().toString();
         this.name = name;
         this.rules = rules;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -20,11 +35,13 @@ public class Category {
         this.name = name;
     }
 
-    public Map<String, String> getRules() {
+
+    public Set<Rule> getRules() {
         return rules;
     }
 
-    public void setRules(Map<String, String> rules) {
+    public void setRules(Set<Rule> rules) {
+
         this.rules = rules;
     }
 
