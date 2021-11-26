@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.NoSuchElementException;
+
 @Service
 @Validated
 public class CreateProgramUseCase implements SaveProgram{
@@ -20,11 +22,23 @@ public class CreateProgramUseCase implements SaveProgram{
 
     @Override
     public Mono<ProgramDTO> apply(ProgramDTO programDTO) {
+
         checkIfProgramNameIsEmpty(programDTO);
         checkCategoryDuration(programDTO);
 
-        return programRepository.save(mapperUtilsProgram.mapperToProgram().apply(programDTO))
-                .map(course ->  mapperUtilsProgram.mapperEntityToProgram().apply(course));
+        if(programDTO.getId() == null){
+            return programRepository.save(mapperUtilsProgram.mapperToProgram().apply(programDTO))
+                    .map(course ->  mapperUtilsProgram.mapperEntityToProgram().apply(course));
+        }
+
+        return programRepository.existsById(programDTO.getId()).flatMap(programExists ->{
+            if(programExists){
+                throw new NoSuchElementException("A program with the same Id already exists");
+            }else{
+                return programRepository.save(mapperUtilsProgram.mapperToProgram().apply(programDTO))
+                        .map(course ->  mapperUtilsProgram.mapperEntityToProgram().apply(course));
+            }
+        });
 
     }
 

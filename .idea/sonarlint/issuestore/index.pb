@@ -59,8 +59,6 @@ Usrc/main/java/com/sofkau/academicsystembackend/routers/program/ListProgramRoute
 Tsrc/main/java/com/sofkau/academicsystembackend/routers/program/GetProgramRouter.java,2/f/2f6aec5050ce1b05dcee5a04ef5c2a5c059692d0
 |
 Lsrc/main/java/com/sofkau/academicsystembackend/collections/program/Time.java,9/0/905f71ff4d960b81d3da61897a4b04e46a7bfb93
-‡
-Wsrc/main/java/com/sofkau/academicsystembackend/routers/program/UpdateProgramRouter.java,7/2/72cc5ceaede4e0f03f3fe0612cc4025493bce8f0
 †
 Vsrc/main/java/com/sofkau/academicsystembackend/usecases/program/GetProgramUseCase.java,6/5/65ac69641f0880ac86892ac19e5e442b60da8597
 ‡
@@ -68,10 +66,4 @@ Wsrc/main/java/com/sofkau/academicsystembackend/usecases/program/ListProgramUseC
 ‡
 Wsrc/main/java/com/sofkau/academicsystembackend/usecases/program/MapperUtilsProgram.java,d/c/dce75b35bbbcdcce7337eaff67ff71c995900a39
 ‡
-Wsrc/main/java/com/sofkau/academicsystembackend/routers/program/CreateProgramRouter.java,3/b/3ba57f3bc822204d11957959c85c7a5e2f24c012
-‡
 Wsrc/main/java/com/sofkau/academicsystembackend/routers/program/DeleteProgramRouter.java,5/1/51fb15df4156f27277e644d5cd0f9ee4ee3c9bf0
-}
-Msrc/main/java/com/sofkau/academicsystembackend/models/program/ProgramDTO.java,e/b/eb0c84dda5b0fad70c7ad94f200bcea91133118c
-‰
-Ysrc/main/java/com/sofkau/academicsystembackend/usecases/program/CreateProgramUseCase.java,c/c/cc0b0296cfa8037d3732e70571ecc6529cc980c7
