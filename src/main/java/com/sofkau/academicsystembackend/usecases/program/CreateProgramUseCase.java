@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.NoSuchElementException;
 
 @Service
@@ -24,6 +27,7 @@ public class CreateProgramUseCase implements SaveProgram{
     public Mono<ProgramDTO> apply(ProgramDTO programDTO) {
 
         checkIfProgramNameIsEmpty(programDTO);
+        checkDuplicateCourses(programDTO);
         checkCategoryDuration(programDTO);
 
         if(programDTO.getId() == null){
@@ -42,6 +46,19 @@ public class CreateProgramUseCase implements SaveProgram{
 
     }
 
+
+    private void checkDuplicateCourses(ProgramDTO programDTO) {
+        var courseIdsList = new ArrayList<>();
+
+        programDTO.getCourses().forEach(course ->
+                courseIdsList.add(course.getCourseId()));
+
+        var courseIdsSet = new HashSet<>(courseIdsList);
+
+        if(courseIdsSet.size()< courseIdsList.size()){
+            throw new IllegalArgumentException("Program cannot have the same course multiple times");        }
+    }
+
     private void checkCategoryDuration(ProgramDTO programDTO) {
         programDTO.getCourses().forEach(courseTime -> courseTime.getCategories().forEach(time -> {
             if (time.getDays() < 1) {
@@ -51,6 +68,7 @@ public class CreateProgramUseCase implements SaveProgram{
     }
 
     private void checkIfProgramNameIsEmpty(ProgramDTO programDTO) {
+
         if (programDTO.getName().isEmpty()) {
             throw new IllegalArgumentException("The name cannot be empty");
         }
