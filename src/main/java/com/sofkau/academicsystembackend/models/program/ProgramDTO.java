@@ -2,6 +2,7 @@ package com.sofkau.academicsystembackend.models.program;
 
 import com.sofkau.academicsystembackend.collections.program.CourseTime;
 
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
