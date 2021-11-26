@@ -61,7 +61,7 @@ public class CreateProgramUseCase implements SaveProgram{
     private void checkCategoryDuration(ProgramDTO programDTO) {
         programDTO.getCourses().forEach(courseTime -> courseTime.getCategories().forEach(time -> {
             if (time.getDays() < 1) {
-                throw new IllegalArgumentException("A course category must last more than one day");
+                throw new IllegalArgumentException("A course category must last at least one day");
             }
         }));
     }
