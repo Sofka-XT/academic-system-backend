@@ -8,7 +8,6 @@ import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 
@@ -26,7 +25,7 @@ public class CreateProgramUseCase implements SaveProgram{
     @Override
     public Mono<ProgramDTO> apply(ProgramDTO programDTO) {
 
-        checkIfProgramNameIsEmpty(programDTO);
+        checkIfProgramNameFormat(programDTO);
         checkDuplicateCourses(programDTO);
         checkCategoryDuration(programDTO);
 
@@ -67,10 +66,12 @@ public class CreateProgramUseCase implements SaveProgram{
         }));
     }
 
-    private void checkIfProgramNameIsEmpty(ProgramDTO programDTO) {
 
-        if (programDTO.getName().isEmpty()) {
-            throw new IllegalArgumentException("The name cannot be empty");
+    private void checkIfProgramNameFormat(ProgramDTO programDTO) {
+
+        if (programDTO.getName().isEmpty()  || programDTO.getName().trim().length() < 3) {
+            throw new IllegalArgumentException("A program must have a name with more than 3 characters");
         }
     }
+
 }
