@@ -60,6 +60,8 @@ class CreateProgramRouterTest {
 
         Mono<Program> programMono = Mono.just(program);
         when(programRepository.save(any())).thenReturn(programMono);
+        when(programRepository.existsById("123")).thenReturn(Mono.just(false));
+
 
         webTestClient.post()
                 .uri("/program/create")

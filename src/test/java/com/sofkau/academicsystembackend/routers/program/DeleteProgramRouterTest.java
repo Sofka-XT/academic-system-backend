@@ -32,7 +32,7 @@ class DeleteProgramRouterTest {
 
         var program = new Program();
         program.setId("xxx");
-
+        when(programRepository.existsById("xxx")).thenReturn(Mono.just(true));
         when(programRepository.deleteById(program.getId())).thenReturn(Mono.empty());
 
         webTestClient.delete()
