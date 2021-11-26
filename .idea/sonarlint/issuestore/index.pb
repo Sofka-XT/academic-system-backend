@@ -37,8 +37,6 @@ Psrc/main/java/com/sofkau/academicsystembackend/usecases/program/SaveProgram.jav
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 ‹
 [src/test/java/com/sofkau/academicsystembackend/routers/program/DeleteProgramRouterTest.java,f/a/fa847b832441e8b72c16ff9449f04cd838043df9
-Š
-Zsrc/test/java/com/sofkau/academicsystembackend/usecases/program/GetProgramUseCaseTest.java,2/b/2b8286f0e62e5466627384b55f54b4ce8ee4271c
 ‹
 [src/test/java/com/sofkau/academicsystembackend/routers/program/CreateProgramRouterTest.java,9/e/9eaefce675bcd78cedcc8ce4a66954bec811b9ca
 ˆ

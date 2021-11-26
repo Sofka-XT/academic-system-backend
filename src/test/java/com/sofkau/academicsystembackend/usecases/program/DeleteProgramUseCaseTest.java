@@ -1,6 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.program;
 
 import com.sofkau.academicsystembackend.collections.program.CourseTime;
+import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.collections.program.Time;
 import com.sofkau.academicsystembackend.models.program.ProgramDTO;
 import com.sofkau.academicsystembackend.repositories.ProgramRepository;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 class DeleteProgramUseCaseTest {
@@ -37,9 +40,12 @@ class DeleteProgramUseCaseTest {
         courseTimes.add(new CourseTime("idcoursetime","firstCourse",time));
 
         var programDTO = new ProgramDTO("xxx","First program",courseTimes);
+        var program = new Program("xxx","First program",courseTimes);
 
+        Mono<Program> mono = Mono.just(program);
+        when(programRepository.save(any())).thenReturn(mono);
+        when(programRepository.existsById("xxx")).thenReturn(Mono.just(true));
         Mockito.when(programRepository.deleteById("xxx")).thenReturn(Mono.empty());
-
         var result = deleteProgramUseCase.apply("xxx").block();
         Assertions.assertEquals(result,null);
     }
