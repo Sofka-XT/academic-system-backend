@@ -19,10 +19,8 @@ class ExtractScoreUseCaseTest {
         emails.add("yamsoncalapzu@gmail.com");
         var seleniumLogin = new SeleniumProcessLogin();
         var usecase = new ExtractScoreUseCase(seleniumLogin);
-        var list = usecase.apply("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:");
-        var result = list.stream().filter(e -> emails.stream().anyMatch(email -> email.equals(e.getName())))
-                .collect(Collectors.toList());
-        System.out.println(result);
+        var list = usecase.apply("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:", emails);
+        System.out.println(list);
     }
 
 }
