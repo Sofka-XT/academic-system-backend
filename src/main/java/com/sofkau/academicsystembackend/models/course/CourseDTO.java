@@ -2,6 +2,7 @@ package com.sofkau.academicsystembackend.models.course;
 
 import com.sofkau.academicsystembackend.collections.course.Category;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 public class CourseDTO {
@@ -9,9 +10,9 @@ public class CourseDTO {
     private String id;
     private String name;
 
-    private Set<Category> categories;
+    private ArrayList<Category> categories;
 
-    public CourseDTO(String id, String name, Set<Category> categories) {
+    public CourseDTO(String id, String name, ArrayList<Category> categories) {
         this.id = id;
         this.name = name;
         this.categories = categories;
@@ -33,11 +34,11 @@ public class CourseDTO {
         this.name = name;
     }
 
-    public Set<Category> getCategories() {
+    public ArrayList<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(ArrayList<Category> categories) {
         this.categories = categories;
     }
 }

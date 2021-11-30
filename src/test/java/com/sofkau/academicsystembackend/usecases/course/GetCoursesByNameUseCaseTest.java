@@ -12,6 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,8 +29,8 @@ class GetCoursesByNameUseCaseTest {
     @DisplayName("test para validar el listar un curso por id de manera correcta")
     void getCoursesByNameUseCaseTest() {
 
-        Set<Category> categories = new HashSet<>();
-        Set<Rule> rules = new HashSet<>();
+        ArrayList<Category> categories = new ArrayList<>();
+        ArrayList<Rule> rules = new ArrayList<>();
 
         rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
