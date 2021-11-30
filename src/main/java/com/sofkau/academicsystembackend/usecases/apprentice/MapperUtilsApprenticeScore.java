@@ -1,13 +1,11 @@
 package com.sofkau.academicsystembackend.usecases.apprentice;
 
 import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
-import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
-import com.sofkau.academicsystembackend.models.program.ProgramDTO;
 
 import java.util.function.Function;
 
-public class MapperUtilsApprentice {
+public class MapperUtilsApprenticeScore {
     public Function<ApprenticeScoreDTO, ApprenticeScore> mapperToApprenticeScore(){
         return apprenticeScoreDTO -> {
             var apprentice = new ApprenticeScore();
@@ -22,6 +20,11 @@ public class MapperUtilsApprentice {
 
     public Function<ApprenticeScore, ApprenticeScoreDTO> mapperEntityToApprenticeScoreDTO(){
         return apprentice -> new ApprenticeScoreDTO(
+            apprentice.getEmail(),
+                apprentice.getApprenticeName(),
+                apprentice.getTrainingId(),
+                apprentice.getPhoneNumber(),
+                apprentice.getCourseScores()
 
         );
     }
