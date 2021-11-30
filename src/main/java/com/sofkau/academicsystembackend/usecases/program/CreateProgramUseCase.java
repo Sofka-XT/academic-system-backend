@@ -45,7 +45,6 @@ public class CreateProgramUseCase implements SaveProgram{
 
     }
 
-
     private void checkDuplicateCourses(ProgramDTO programDTO) {
         var courseIdsList = new ArrayList<>();
 
@@ -65,7 +64,6 @@ public class CreateProgramUseCase implements SaveProgram{
             }
         }));
     }
-
 
     private void checkIfProgramNameFormat(ProgramDTO programDTO) {
 
