@@ -2,7 +2,7 @@ package com.sofkau.academicsystembackend.collections.course;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.Set;
+import java.util.ArrayList;
 import java.util.UUID;
 
 @Document
@@ -11,9 +11,9 @@ public class Category {
     private String id;
     private String name;
 
-    private Set<Rule> rules;
+    private ArrayList<Rule> rules;
 
-    public Category( String name, Set<Rule> rules) {
+    public Category( String name, ArrayList<Rule> rules) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.rules = rules;
@@ -36,11 +36,11 @@ public class Category {
     }
 
 
-    public Set<Rule> getRules() {
+    public ArrayList<Rule> getRules() {
         return rules;
     }
 
-    public void setRules(Set<Rule> rules) {
+    public void setRules(ArrayList<Rule> rules) {
 
         this.rules = rules;
     }

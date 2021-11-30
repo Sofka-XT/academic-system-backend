@@ -13,7 +13,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -30,11 +31,13 @@ class DeleteCourseUseCaseTest {
     @Test
     @DisplayName("test para eliminar un curso")
     void deleteCourseSuccess(){
+        ArrayList<Rule> rules = new ArrayList<>(Arrays.asList(
+                new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
+                new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
+                new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
-                Set.of(new Category( "programación funcional",
-                        Set.of(new Rule(Type.DANGER, "<", "40",
-                                new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=MOqm0qGJhpw&list=RDXfdgwJenJKY&index=20&ab_channel=EmreKerabark"))))));
-
+                categories);
         when(courseRepository.deleteById("C-111")).thenReturn(Mono.empty());
 
         var result = deleteCourseUseCase.apply("C-111").block();

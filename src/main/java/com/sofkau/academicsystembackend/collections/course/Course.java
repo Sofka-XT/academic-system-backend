@@ -10,7 +10,7 @@ public class Course {
     @Id
     private String id;
     private String name;
-    private Set<Category> categories;
+    private ArrayList<Category> categories;
 
     public Course() {
     }
@@ -31,11 +31,11 @@ public class Course {
         this.name = name;
     }
 
-    public Set<Category> getCategories() {
+    public ArrayList<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(ArrayList<Category> categories) {
         this.categories = categories;
     }
 

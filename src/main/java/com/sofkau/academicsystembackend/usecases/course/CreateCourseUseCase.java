@@ -40,7 +40,7 @@ public class CreateCourseUseCase implements SaveCourse {
         if (courseDTO.getCategories() == null || courseDTO.getCategories().isEmpty()) {
             return Mono.error(new IllegalArgumentException("Debe existir al menos una categoria"));
         }
-        if (courseDTO.getName() == null || courseDTO.getName() == "") {
+        if (courseDTO.getName() == null || courseDTO.getName().isEmpty()) {
             return Mono.error(new IllegalArgumentException("el curso debe tener el nombre"));
         }
         return null;
