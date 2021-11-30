@@ -14,15 +14,18 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     private TrainingMapper trainingMapper;
     private TrainingRepository trainingRepository;
+    private CreateCalendarUseCase createCalendarUseCase;
 
-    public CreateTrainingUseCase(TrainingRepository trainingRepository, TrainingMapper trainingMapper) {
+    public CreateTrainingUseCase(TrainingRepository trainingRepository, TrainingMapper trainingMapper, CreateCalendarUseCase createCalendarUseCase) {
         this.trainingRepository = trainingRepository;
         this.trainingMapper = trainingMapper;
+        this.createCalendarUseCase = createCalendarUseCase;
     }
 
     @Override
     public Mono<TrainingDTO> apply(TrainingDTO trainingDTO) {
 
+        createCalendarUseCase.apply(trainingDTO);
         return trainingRepository.save(trainingMapper.mapperToTraining()
                         .apply(trainingDTO))
                 .map(training -> trainingMapper.mapperEntityToTrainingDTO()

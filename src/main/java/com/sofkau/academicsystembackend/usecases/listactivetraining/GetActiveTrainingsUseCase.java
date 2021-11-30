@@ -1,6 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.listactivetraining;
 
 
+import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.collections.program.Time;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import com.sofkau.academicsystembackend.repositories.ProgramRepository;
@@ -10,8 +11,10 @@ import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Optional;
 import java.util.function.Supplier;
 
 @Service
@@ -32,7 +35,9 @@ public class GetActiveTrainingsUseCase implements Supplier<Flux<TrainingDTO>> {
     public Flux<TrainingDTO> get() {
         return trainingRepository.findAll().filter(
                 training -> {
-                    var program = programRepository.findById(training.getProgram()).block();
+                    programRepository.findById(training.getProgram()).subscribe();
+                    var program = programRepository.findById(training.getProgram())
+                            .blockOptional().orElse(new Program("null", "null", new ArrayList<>()));
                     var end_date = training.getStartingDate().plusDays(program.getCourses().stream()
                             .map(courseTime -> courseTime.getCategories().stream()
                                         .map(Time::getDays).reduce(0, Integer::sum)

@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -43,7 +44,9 @@ class CreateProgramUseCaseTest {
 
         var program = new Program("xxx","First program",courseTimes);
 
-
+        Mono<Program> mono = Mono.just(program);
+        when(programRepository.save(any())).thenReturn(mono);
+        when(programRepository.existsById("xxx")).thenReturn(Mono.just(false));
         when(programRepository.save(Mockito.any(Program.class))).thenReturn(Mono.just(program));
         var result=createProgramUseCase.apply(programDTO);
         Assertions.assertEquals(Objects.requireNonNull(result.block().getId()),"xxx");
