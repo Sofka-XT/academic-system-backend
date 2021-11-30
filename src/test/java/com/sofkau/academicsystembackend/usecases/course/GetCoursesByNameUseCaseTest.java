@@ -13,8 +13,6 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootTest
 class GetCoursesByNameUseCaseTest {

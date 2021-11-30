@@ -14,9 +14,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Set;
 
-import static org.mockito.ArgumentMatchers.any;
+
 
 @SpringBootTest
 class UpdateCourseUseCaseTest {

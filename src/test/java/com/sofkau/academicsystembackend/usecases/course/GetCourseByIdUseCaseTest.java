@@ -13,8 +13,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @SpringBootTest
 class GetCourseByIdUseCaseTest {
