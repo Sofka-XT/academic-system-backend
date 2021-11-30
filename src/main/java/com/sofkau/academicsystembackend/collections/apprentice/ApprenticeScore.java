@@ -11,8 +11,8 @@ import java.util.List;
 public class ApprenticeScore {
 
     @Id
-    @NotBlank(message = "apprentice must have a mail")
-    private String mail;
+    @NotBlank(message = "apprentice must have an email")
+    private String email;
     @NotBlank(message = "apprentice must have a name")
     private String apprenticeName;
     @NotBlank(message = "apprentice must have a training id")
@@ -25,20 +25,20 @@ public class ApprenticeScore {
     public ApprenticeScore() {
     }
 
-    public ApprenticeScore(String mail, String apprenticeName, String trainingId, String phoneNumber, List<CourseScore> courseScores) {
-        this.mail = mail;
+    public ApprenticeScore(String email, String apprenticeName, String trainingId, String phoneNumber, List<CourseScore> courseScores) {
+        this.email = email;
         this.apprenticeName = apprenticeName;
         this.trainingId = trainingId;
         this.phoneNumber = phoneNumber;
         this.courseScores = courseScores;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getApprenticeName() {
