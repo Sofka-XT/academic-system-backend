@@ -6,6 +6,7 @@ import com.sofkau.academicsystembackend.repositories.ProgramRepository;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
@@ -33,19 +34,18 @@ public class CreateCalendarUseCase implements Function<Mono<TrainingDTO>, Mono<T
         programRepository.findById(programId).subscribe();
         var program = programRepository.findById(programId).blockOptional().orElse(new Program("null", "null", new ArrayList<>()));
 
-        program.getCourses().stream().map(course -> {
-            course.getCategories().stream().map(category ->{
-                categoryIterable.put(category.getCategoryId(), category.getDays());
-                return null;
-            });
-            return null;
-        });
+        program.getCourses().stream().map(course ->
+            course.getCategories().stream().map(category ->
+                categoryIterable.put(category.getCategoryId(), category.getDays()));
 
 
         categoryIterable.forEach((key, value)->{
             System.out.printf("Clave : "+key +" Valor: "+value);
         });
 
-        return null;
+        return trainingDTO
+                .flatMap(dto -> programRepository.findById(dto.getProgram()))
+                .map(program1 -> Flux.fromIterable(program1.getCourses()))
+                .map(course -> Flux.fromIterable());
     }
 }
