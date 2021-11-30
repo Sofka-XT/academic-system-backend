@@ -38,7 +38,8 @@ class CreateCourseUseCaseTest {
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
-        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
+        ArrayList<String> url = new ArrayList<>(Arrays.asList("https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules, url) ));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
                 categories);
         var course = new Course();
@@ -55,6 +56,10 @@ class CreateCourseUseCaseTest {
                             assert courseDTO1.getId().equals(course.getId());
                             assert courseDTO1.getName().equals(course.getName());
                             assert courseDTO1.getCategories().equals(course.getCategories());
+                            assert courseDTO1.getCategories().get(0).getRules().equals(course.getCategories().get(0).getRules());
+                            assert courseDTO1.getCategories().get(0).getRules().get(0).getFeedback().equals(course.getCategories().get(0).getRules().get(0).getFeedback());
+                            assert courseDTO1.getCategories().get(0).getRules().get(0).getFeedback().getUri().equals(course.getCategories().get(0).getRules().get(0).getFeedback().getUri());
+                            assert courseDTO1.getCategories().get(0).getUrlsRefGradles().equals(course.getCategories().get(0).getUrlsRefGradles());
                             return true;
                         }).verifyComplete();
 
@@ -69,7 +74,8 @@ class CreateCourseUseCaseTest {
                 new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
-        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
+        ArrayList<String> url = new ArrayList<>(Arrays.asList("https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules, url) ));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
         categories);
         var course = new Course();
