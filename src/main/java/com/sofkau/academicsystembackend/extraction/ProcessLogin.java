@@ -1,4 +1,4 @@
-package com.sofkau.academicsystembackend.extration;
+package com.sofkau.academicsystembackend.extraction;
 
 import java.util.Map;
 

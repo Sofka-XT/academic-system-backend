@@ -1,4 +1,4 @@
-package com.sofkau.academicsystembackend.extration;
+package com.sofkau.academicsystembackend.extraction;
 
 public class Score {
     private  String name;

@@ -1,13 +1,11 @@
-package com.sofkau.academicsystembackend.extration;
+package com.sofkau.academicsystembackend.extraction;
 
-import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 public class SeleniumProcessLogin implements ProcessLogin {
     protected WebDriver driver;
