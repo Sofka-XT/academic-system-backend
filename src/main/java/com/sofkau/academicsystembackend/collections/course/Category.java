@@ -10,6 +10,7 @@ public class Category {
 
     private String id;
     private String name;
+
     private ArrayList<String> urlsRefGradles;
     private ArrayList<Rule> rules;
 
