@@ -46,6 +46,7 @@ class CreateCourseUseCaseTest {
         course.setName("programacion reactiva y funcional");
         course.setCategories(categories);
 
+        when(courseRepository.findByName(courseDTO.getName())).thenReturn(Mono.empty());
         when(courseRepository.save(any())).thenReturn(Mono.just(course));
 
         StepVerifier.create(createCourseUseCase.apply(courseDTO))

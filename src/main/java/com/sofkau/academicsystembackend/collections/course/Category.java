@@ -10,10 +10,9 @@ public class Category {
 
     private String id;
     private String name;
-
     private ArrayList<Rule> rules;
 
-    public Category( String name, ArrayList<Rule> rules) {
+    public Category(String name, ArrayList<Rule> rules) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.rules = rules;
