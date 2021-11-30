@@ -12,7 +12,7 @@ public class ScrappingScoreUseCase {
 
     @Scheduled(cron = "*/10 * * * * *")
     public void apply(){
-        getTrainingUseCase.getAll().subscribe(resp -> System.out.println(resp));
+        getTrainingUseCase.getAll().subscribe();
 //        System.out.println("Hello");
 
     }
