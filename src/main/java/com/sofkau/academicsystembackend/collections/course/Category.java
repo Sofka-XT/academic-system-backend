@@ -15,6 +15,7 @@ public class Category {
     private ArrayList<Rule> rules;
 
     public Category(String name, ArrayList<Rule> rules, ArrayList<String> urlsRefGradles) {
+
         this.id = UUID.randomUUID().toString();
         this.name = name;
         this.rules = rules;
