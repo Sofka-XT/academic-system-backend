@@ -1,5 +1,6 @@
 package com.sofkau.academicsystembackend.usecases.training;
 
+import com.sofkau.academicsystembackend.collections.program.Program;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import com.sofkau.academicsystembackend.repositories.ProgramRepository;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -27,17 +29,17 @@ public class CreateCalendarUseCase implements Function<Mono<TrainingDTO>, Mono<T
     @Override
     public Mono<TrainingDTO> apply(Mono<TrainingDTO> trainingDTO) {
         var programId = trainingDTO.block().getProgram();
-        var program = programRepository.findById(programId);
         Map<String, Integer > categoryIterable = new HashMap<>();
-        program.flatMap(program1 -> {
-            program1.getCourses().
-        })
+        programRepository.findById(programId).subscribe();
+        var program = programRepository.findById(programId).blockOptional().orElse(new Program("null", "null", new ArrayList<>()));
 
-        /*program.getCourses().stream().forEach(course -> {
-            course.getCategories().stream().forEach(category ->{
+        program.getCourses().stream().map(course -> {
+            course.getCategories().stream().map(category ->{
                 categoryIterable.put(category.getCategoryId(), category.getDays());
+                return null;
             });
-        });*/
+            return null;
+        });
 
 
         categoryIterable.forEach((key, value)->{

@@ -4,13 +4,15 @@ public class CategoryToScrap {
 
     private String categoryId;
     private String categoryURL;
+    private String courseId;
 
     public CategoryToScrap() {
     }
 
-    public CategoryToScrap(String categoryId, String categoryURL) {
+    public CategoryToScrap(String categoryId, String categoryURL, String courseId) {
         this.categoryId = categoryId;
         this.categoryURL = categoryURL;
+        this.courseId = courseId;
     }
 
     public String getCategoryId() {
