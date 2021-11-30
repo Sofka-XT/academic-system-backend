@@ -45,6 +45,7 @@ class UpdateCourseUseCaseTest {
         course.setCategories(categories);
 
         Mockito.when(courseRepository.save(Mockito.any(Course.class))).thenReturn(Mono.just(course));
+        Mockito.when(courseRepository.findByName(courseDTO.getName())).thenReturn(Mono.empty());
         Mockito.when(courseRepository.findById(courseDTO.getId())).thenReturn(Mono.just(course));
 
         var result = updateCourseUseCase.apply(courseDTO).block();
