@@ -11,7 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,27 +23,20 @@ public class GetTrainingUseCase {
     @Autowired
     private WebClient client;
     private MapperUtilsScrapping mapperUtilsScrapping;
+    private CreateScrapDtoFromTrainingUseCase createScrapDtoFromTrainingUseCase;
 
 
 
     public Flux<TrainingDTO> getAll() {
         return  client.get().uri("/training/list-actives").accept(MediaType.APPLICATION_JSON)
                 .exchangeToFlux(response -> response.bodyToFlux(TrainingDTO.class)).map(traing -> {
-                    // [trainingActive , trainingActive ,trainingActive ,trainingActive ]
-                    var listStudents = traing.getApprentices().stream().map(Apprentice::getEmailAddress).collect(Collectors.toList());
-                    // logica sacar mapa
-
-
-                    logger.info(Arrays.toString(listStudents.toArray()));
+                    var scrapsDTO = createScrapDtoFromTrainingUseCase.apply(traing);
+                    scrapsDTO.forEach(scraps -> logger.info(scraps.toString()));
                     return traing;
                 });
     }
 
-//    public Flux<ApprenticeDTO>  getStudents(){
-//        return getAll().map(obj -> {
-////            var dtoToMap = obj.getApprentices().stream().map(apprentice -> )
-//            return obj;
-//                   });
-//    }
+
+
 
 }

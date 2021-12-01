@@ -5,6 +5,7 @@ import com.sofkau.academicsystembackend.collections.training.Coach;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -16,6 +17,7 @@ public class TrainingDTO {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
+    private HashMap<String, List<CategoryToScrap>> categoriesToScraps;
 
 
     public TrainingDTO() {
@@ -35,6 +37,13 @@ public class TrainingDTO {
     }
 
 
+    public HashMap<String, List<CategoryToScrap>> getCategoriesToScraps() {
+        return categoriesToScraps;
+    }
+
+    public void setCategoriesToScraps(HashMap<String, List<CategoryToScrap>> categoriesToScraps) {
+        this.categoriesToScraps = categoriesToScraps;
+    }
 
     public String getTrainingId() {
         return trainingId;
