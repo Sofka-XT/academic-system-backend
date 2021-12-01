@@ -6,15 +6,20 @@ import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.ArrayList;
 
 
 class ScoreExtactorUseCaseTest {
     ScoreExtactorUseCase scoreExtactorUseCase;
+    UpdateGradesApprenticeUseCase   updateGradesApprenticeUseCase;
+    WebClient client;
+
     @BeforeEach
     void setUp() {
-        scoreExtactorUseCase = new ScoreExtactorUseCase();
+        updateGradesApprenticeUseCase = new UpdateGradesApprenticeUseCase(client);
+        scoreExtactorUseCase = new ScoreExtactorUseCase(updateGradesApprenticeUseCase);
     }
     @Test
     @DisplayName("Test para validar la extracción de notas del campus")
