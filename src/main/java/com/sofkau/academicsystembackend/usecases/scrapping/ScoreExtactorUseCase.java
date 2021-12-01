@@ -4,14 +4,12 @@ import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
 import com.sofkau.academicsystembackend.extraction.Score;
 import com.sofkau.academicsystembackend.extraction.SeleniumProcessLogin;
 import com.sofkau.academicsystembackend.models.scrap.scrapDTO;
-import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collectors;
+
 
 @Service
 public class ScoreExtactorUseCase  implements Function<scrapDTO, Mono<List<Score>>>{

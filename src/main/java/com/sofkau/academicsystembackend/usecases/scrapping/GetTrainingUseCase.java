@@ -1,7 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.scrapping;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
-import com.sofkau.academicsystembackend.models.scrap.ApprenticeDTO;
+
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

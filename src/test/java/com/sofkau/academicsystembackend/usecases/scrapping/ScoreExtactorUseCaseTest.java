@@ -1,7 +1,6 @@
 package com.sofkau.academicsystembackend.usecases.scrapping;
 
-import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
-import com.sofkau.academicsystembackend.extraction.SeleniumProcessLogin;
+
 import com.sofkau.academicsystembackend.models.scrap.scrapDTO;
 import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,8 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 class ScoreExtactorUseCaseTest {
     ScoreExtactorUseCase scoreExtactorUseCase;
