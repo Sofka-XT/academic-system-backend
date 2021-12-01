@@ -16,11 +16,10 @@ import java.util.stream.Collectors;
 @Service
 public class ScoreExtactorUseCase  implements Function<scrapDTO, Mono<List<Score>>>{
 
-    private final SeleniumProcessLogin seleniumProcessLogin;
+   SeleniumProcessLogin seleniumProcessLogin = new SeleniumProcessLogin();
     private final ExtractScoreUseCase extractScoreUseCase;
 
-    public ScoreExtactorUseCase(SeleniumProcessLogin seleniumProcessLogin) {
-        this.seleniumProcessLogin = seleniumProcessLogin;
+    public ScoreExtactorUseCase() {
         this.extractScoreUseCase = new ExtractScoreUseCase(seleniumProcessLogin);
     }
 
