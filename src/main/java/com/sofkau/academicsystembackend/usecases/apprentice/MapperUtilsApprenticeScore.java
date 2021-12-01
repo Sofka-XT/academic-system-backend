@@ -2,18 +2,20 @@ package com.sofkau.academicsystembackend.usecases.apprentice;
 
 import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+@Component
 public class MapperUtilsApprenticeScore {
     public Function<ApprenticeScoreDTO, ApprenticeScore> mapperToApprenticeScore(){
         return apprenticeScoreDTO -> {
             var apprentice = new ApprenticeScore();
             apprentice.setApprenticeName(apprenticeScoreDTO.getApprenticeName());
             apprentice.setEmail(apprenticeScoreDTO.getEmail());
-            apprentice.setPhoneNumber(apprentice.getPhoneNumber());
+            apprentice.setPhoneNumber(apprenticeScoreDTO.getPhoneNumber());
             apprentice.setTrainingId(apprenticeScoreDTO.getTrainingId());
-            apprentice.setCourseScores(apprentice.getCourseScores());
+            apprentice.setCourseScores(apprenticeScoreDTO.getCourseScores());
             return apprentice;
         };
     }
