@@ -12,38 +12,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDate;
+
 @Service
 @Validated
 public class UpdateApprenticeScoreUseCase {
     private final ApprenticeScoreRepository apprenticeScoreRepository;
-    private final MapperUtilsApprenticeScore mapperUtilsApprenticeScore;
 
     @Autowired
-    public UpdateApprenticeScoreUseCase(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
+    public UpdateApprenticeScoreUseCase(ApprenticeScoreRepository apprenticeScoreRepository) {
         this.apprenticeScoreRepository = apprenticeScoreRepository;
-        this.mapperUtilsApprenticeScore = mapperUtilsApprenticeScore;
     }
 
-
-    public Mono<ApprenticeScoreDTO> updateApprentice(ScoreDTO scoreDTO){
-
+    public Mono<String> updateApprentice(ScoreDTO scoreDTO){
 
         var apprenticeToUpdate = apprenticeScoreRepository.findById(scoreDTO.getEmail());
         apprenticeToUpdate.subscribe(
                 value ->{
                     value.getCourseScores().forEach(courses -> {
-                        if (courses.getCourseId() == scoreDTO.getCourseId()) {
+                        if (courses.getCourseId().equals(scoreDTO.getCourseId()) ) {
                             courses.getCategoryScoreList().forEach(categories->{
-                                if (categories.getCategoryId() == scoreDTO.getCategoryId()) {
+                                if (categories.getCategoryId().equals(scoreDTO.getCategoryId()) ) {
                                     categories.setScore(scoreDTO.getScore());
+                                    categories.setUpdateScoreDate(LocalDate.now());
                                 }
                             });
                         }
                     });
-                    ApprenticeScore apprenticeScore = value;
-                    apprenticeScoreRepository.save(apprenticeScore).subscribe();
+                apprenticeScoreRepository.save(value).subscribe();
                 }
         );
-        return null;
+        return  apprenticeToUpdate.map(apprenticeScore -> apprenticeScore.getEmail());
     }
 }
