@@ -5,6 +5,7 @@ import com.sofkau.academicsystembackend.collections.apprentice.CategoryScore;
 import com.sofkau.academicsystembackend.collections.apprentice.CourseScore;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
+import com.sofkau.academicsystembackend.usecases.listapprenticesandgrades.GetApprenticesAndGradesUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,26 +13,25 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Mono;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static reactor.core.publisher.Mono.when;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class CreateApprenticeScoreUseCaseTest {
+public class GetApprenticesAndGradesUseCaseTest {
 
     @MockBean
     private ApprenticeScoreRepository apprenticeScoreRepository;
 
     @SpyBean
 
-    private CreateApprenticeScoreUseCase createApprenticeScoreUseCase;
+    private GetApprenticesAndGradesUseCase getApprenticesAndGradesUseCase;
 
     @Test
-    void createCreateApprentice(){
+    void GetApprenticeScoreU(){
 
         List<CategoryScore> categoryScoreList = new ArrayList<>();
         categoryScoreList.add(new CategoryScore("1","Java",90));
@@ -47,9 +47,9 @@ public class CreateApprenticeScoreUseCaseTest {
 
         when(apprenticeScoreRepository.save(any())).thenReturn(mono);
 
-        var result=createApprenticeScoreUseCase.apply(apprenticeScoreDTO);
+        var result=getApprenticesAndGradesUseCase.apply("1");
 
-        Assertions.assertEquals(Objects.requireNonNull(result.block().getApprenticeName()),"Carlos");
+        Assertions.assertEquals(Objects.requireNonNull(result.block().getTrainingId()),"1");
     }
 
 
