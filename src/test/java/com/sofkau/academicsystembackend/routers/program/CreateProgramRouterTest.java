@@ -39,8 +39,8 @@ class CreateProgramRouterTest {
 
     @Test
     public void testCreateProgram(){
-        var time1 = new Time("cat111",10,"Unit tests");
-        var time2 = new Time ("cat222",2,"Introduction");
+        var time1 = new Time("cat111",10,"Unit tests", new ArrayList<>());
+        var time2 = new Time ("cat222",2,"Introduction", new ArrayList<>());
 
         List<Time> timeList = new ArrayList<>();
         Collections.addAll(timeList, time1, time2);
