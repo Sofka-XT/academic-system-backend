@@ -30,4 +30,3 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
                         .apply(trainingDTO)).map(training -> trainingMapper.mapperEntityToTrainingDTO().apply(training));
     }
 }
-

@@ -33,13 +33,13 @@ class ListProgramUseCaseTest {
     public void getAll() {
 
         List<Time> time = new ArrayList<>();
-        time.add(new Time("categoryid1",6,"categoryName1"));
-        time.add(new Time("categoryid2",2,"categoryName2"));
+        time.add(new Time("categoryid1",6,"categoryName1", new ArrayList<>()));
+        time.add(new Time("categoryid2",2,"categoryName2", new ArrayList<>()));
         List<CourseTime> courseTimes = new ArrayList<>();
         courseTimes.add(new CourseTime("idcoursetime","firstCourse",time));
 
-        var time1 = new Time("cat111",10,"Unit tests");
-        var time2 = new Time ("cat222",2,"Introduction");
+        var time1 = new Time("cat111",10,"Unit tests", new ArrayList<>());
+        var time2 = new Time ("cat222",2,"Introduction", new ArrayList<>());
         List<Time> timeList = new ArrayList<>();
         Collections.addAll(timeList, time1, time2);
         courseTimes.add(new CourseTime("course111","FullStack", timeList));

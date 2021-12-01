@@ -36,7 +36,8 @@ class UpdateCourseUseCaseTest {
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
-        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
+        ArrayList<String> url = new ArrayList<>(Arrays.asList("https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules, url) ));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
                 categories);
         var course = new Course();
@@ -45,6 +46,7 @@ class UpdateCourseUseCaseTest {
         course.setCategories(categories);
 
         Mockito.when(courseRepository.save(Mockito.any(Course.class))).thenReturn(Mono.just(course));
+        Mockito.when(courseRepository.findByName(courseDTO.getName())).thenReturn(Mono.empty());
         Mockito.when(courseRepository.findById(courseDTO.getId())).thenReturn(Mono.just(course));
 
         var result = updateCourseUseCase.apply(courseDTO).block();

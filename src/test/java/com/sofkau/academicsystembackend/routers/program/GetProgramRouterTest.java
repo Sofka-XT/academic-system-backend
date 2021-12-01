@@ -40,8 +40,8 @@ class GetProgramRouterTest {
 
     @Test
     void getProgramRouter(){
-        var time1 = new Time("cat333",10,"Unit tests");
-        var time2 = new Time ("cat456",2,"AAA principle");
+        var time1 = new Time("cat333",10,"Unit tests", new ArrayList<>());
+        var time2 = new Time ("cat456",2,"AAA principle", new ArrayList<>());
 
         List<Time> timeList = new ArrayList<>();
         Collections.addAll(timeList, time1, time2);
