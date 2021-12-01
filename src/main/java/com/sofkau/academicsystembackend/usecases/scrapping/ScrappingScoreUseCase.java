@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 public class ScrappingScoreUseCase {
 
     @Autowired
-    private GetTrainingUseCase getTrainingUseCase;
+    private ScrapingScoreFromTrainings getTrainingUseCase;
 
     @Scheduled(cron = "*/10 * * * * *")
     public void apply(){
-        getTrainingUseCase.getAll().subscribe();
+        getTrainingUseCase.apply();
 //        System.out.println("Hello");
 
     }

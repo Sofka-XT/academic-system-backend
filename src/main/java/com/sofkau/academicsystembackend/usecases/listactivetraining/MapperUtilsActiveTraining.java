@@ -28,7 +28,8 @@ public class MapperUtilsActiveTraining {
                 training.getProgram(),
                 training.getStartingDate(),
                 training.getApprentices(),
-                training.getCoaches()
+                training.getCoaches(),
+                null
         );
     }
 }

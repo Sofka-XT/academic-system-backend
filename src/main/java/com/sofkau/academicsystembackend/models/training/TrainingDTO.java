@@ -2,13 +2,21 @@ package com.sofkau.academicsystembackend.models.training;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
 import com.sofkau.academicsystembackend.collections.training.Coach;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-import java.util.HashMap;
+
 import java.util.List;
+import java.util.Map;
 
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class TrainingDTO {
     private String trainingId;
     private String name;
@@ -17,31 +25,23 @@ public class TrainingDTO {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
-    private HashMap<String, List<CategoryToScrap>> categoriesToScraps;
+    private Map<String, List<CategoryToScrap>> categoriesToScraps;
 
 
-    public TrainingDTO() {
-    }
+
 
     public TrainingDTO(String trainingId) {
         this.trainingId = trainingId;
     }
 
-    public TrainingDTO(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches) {
-        this.trainingId = trainingId;
-        this.name = name;
-        this.programId = programId;
-        this.startingDate = startingDate;
-        this.apprentices = apprentices;
-        this.coaches = coaches;
-    }
 
 
-    public HashMap<String, List<CategoryToScrap>> getCategoriesToScraps() {
+
+    public Map<String, List<CategoryToScrap>> getCategoriesToScraps() {
         return categoriesToScraps;
     }
 
-    public void setCategoriesToScraps(HashMap<String, List<CategoryToScrap>> categoriesToScraps) {
+    public void setCategoriesToScraps(Map<String, List<CategoryToScrap>> categoriesToScraps) {
         this.categoriesToScraps = categoriesToScraps;
     }
 
