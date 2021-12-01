@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CreateScrapDtoFromTrainingUseCase {
+public class  CreateScrapDtoFromTrainingUseCase {
     Logger logger = LoggerFactory.getLogger(CreateScrapDtoFromTrainingUseCase.class);
 
-  public List<ScrapDTO> apply(TrainingDTO trainingDTO){
+  public List<ScrapDTO> apply(TrainingDTO trainingDTO,LocalDate localDate){
     var emailsStudents = getEmailsToApprentices(trainingDTO.getApprentices());
-    var mapFiltred = trainingDTO.getCategoriesToScraps().get(LocalDate.now().toString());
+    var mapFiltred = trainingDTO.getCategoriesToScraps().get(localDate.toString());
     logger.warn(LocalDate.now().toString());
     if(mapFiltred == null){
       return  null;

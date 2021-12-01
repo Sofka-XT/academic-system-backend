@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
+import java.time.LocalDate;
+
 @Service
 public class ScrapingScoreFromTrainings {
     Logger logger = LoggerFactory.getLogger(ScrapingScoreFromTrainings.class);
@@ -25,7 +27,8 @@ public class ScrapingScoreFromTrainings {
     }
     public Flux<Void> apply(){
       return  getAll().map(traing -> {
-        var scrapsDTO = createScrapDtoFromTrainingUseCase.apply(traing);
+
+        var scrapsDTO = createScrapDtoFromTrainingUseCase.apply(traing, LocalDate.now());
         scrapsDTO.forEach(scraps -> logger.info(scraps.toString()));
         return null;
       });

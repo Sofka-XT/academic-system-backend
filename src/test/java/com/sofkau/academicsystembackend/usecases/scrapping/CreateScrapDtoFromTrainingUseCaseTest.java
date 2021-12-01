@@ -5,26 +5,15 @@ import com.sofkau.academicsystembackend.collections.training.Coach;
 import com.sofkau.academicsystembackend.models.scrap.ScrapDTO;
 import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
-import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.PrepareTestInstance;
-import reactor.core.publisher.Flux;
-import reactor.test.StepVerifier;
 
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 
@@ -44,8 +33,8 @@ class CreateScrapDtoFromTrainingUseCaseTest {
     ) );
     categorysToScrap.put("2021-12-04", List.of(
             CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-4").categoryURL(List.of("url1111","url2222")).build(),
-            CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-4").categoryURL(List.of("url3333","url4444")).build(),
-            CategoryToScrap.builder().categoryId("xxxx-5555").courseId("xxxx-6666-2021-12-4").categoryURL(List.of("url5555","url66666")).build()
+            CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-4").categoryURL(List.of("url3333","url4444")).build()
+
     ) );
     categorysToScrap.put("2021-12-05", List.of(
             CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-5").categoryURL(List.of("url1111","url2222")).build(),
@@ -71,40 +60,19 @@ class CreateScrapDtoFromTrainingUseCaseTest {
             .categoriesToScraps(categorysToScrap)
             .coaches(listOfCoaches).build();
 
-//    MockedStatic(LocalDate.class);
-    var response =createScrapDtoFromTrainingUseCase.apply(trainingDTO1);
+    var response =createScrapDtoFromTrainingUseCase.apply(trainingDTO1,LocalDate.of(2021,12,4));
     var result = List.of(
-
             ScrapDTO.builder().studentsEmails(List.of( "algo@gmail.com",
                     "otracosa@gmail.com",
                     "maluco@gmail.com",
-                    "el-bejuco@gmail.com")).categoriesToScraps(CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-1").categoryURL(List.of("url1111","url2222")).build()).build()
+                    "el-bejuco@gmail.com")).categoriesToScraps(CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-4").categoryURL(List.of("url1111","url2222")).build()).build(),
+            ScrapDTO.builder().studentsEmails(List.of( "algo@gmail.com",
+                    "otracosa@gmail.com",
+                    "maluco@gmail.com",
+                    "el-bejuco@gmail.com")).categoriesToScraps(CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-4").categoryURL(List.of("url3333","url4444")).build()).build()
+
 
     );
-
-    LocalDate currentLocalDate = LocalDate.of(2021, 12, 3);
-    try (MockedStatic<LocalDate> topDateTimeUtilMock = Mockito.mockStatic(LocalDate.class)) {
-      topDateTimeUtilMock.when(() -> LocalDate.now()).thenReturn(currentLocalDate);
-
-      assertEquals(result , response);
-
-
-    }
-
-
-
-
-
-
-//    TrainingDTO trainingDTO1 = new TrainingDTO("61a6a479d920d5595c93c9fd","DESARROLLO",
-//            "61a12cb1fb9597627509645c", LocalDate.of(2022, 11, 3),
-//            listOfApprentices1,listOfCoaches);
-
-
-
-
+    assertEquals(result , response);
   }
-
-
-
 }
