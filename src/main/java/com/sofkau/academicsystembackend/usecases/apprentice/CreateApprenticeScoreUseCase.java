@@ -72,6 +72,7 @@ public class CreateApprenticeScoreUseCase implements SaveApprentice{
 
                                 );
                             }).collect(Collectors.toList()));
+                    System.out.println("entra aqui");
                     apply(apprenticeScore).subscribe();
                 }
 
