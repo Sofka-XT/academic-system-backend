@@ -1,5 +1,6 @@
 package com.sofkau.academicsystembackend.usecases.apprentice;
 
+import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
 import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
 import com.sofkau.academicsystembackend.models.program.ProgramDTO;
@@ -24,12 +25,25 @@ public class UpdateApprenticeScoreUseCase {
     }
 
 
-    public Mono<ApprenticeScoreDTO> updateProgram(ScoreDTO scoreDTO){
+    public Mono<ApprenticeScoreDTO> updateApprentice(ScoreDTO scoreDTO){
 
-        var apprenticeToUpdate = apprenticeScoreRepository.findById(scoreDTO.getEmail())
-                .map(apprenticeScore -> mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO().apply(apprenticeScore));
+
+        var apprenticeToUpdate = apprenticeScoreRepository.findById(scoreDTO.getEmail());
+        apprenticeToUpdate.subscribe(
+                value ->{
+                    value.getCourseScores().forEach(courses -> {
+                        if (courses.getCourseId() == scoreDTO.getCourseId()) {
+                            courses.getCategoryScoreList().forEach(categories->{
+                                if (categories.getCategoryId() == scoreDTO.getCategoryId()) {
+                                    categories.setScore(scoreDTO.getScore());
+                                }
+                            });
+                        }
+                    });
+                    ApprenticeScore apprenticeScore = value;
+                    apprenticeScoreRepository.save(apprenticeScore).subscribe();
+                }
+        );
         return null;
-
-
     }
 }
