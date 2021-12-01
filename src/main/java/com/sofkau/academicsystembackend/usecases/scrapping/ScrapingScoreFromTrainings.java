@@ -16,7 +16,6 @@ public class ScrapingScoreFromTrainings {
     Logger logger = LoggerFactory.getLogger(ScrapingScoreFromTrainings.class);
     @Autowired
     private WebClient client;
-    private MapperUtilsScrapping mapperUtilsScrapping;
     private CreateScrapDtoFromTrainingUseCase createScrapDtoFromTrainingUseCase;
 
 
@@ -26,9 +25,8 @@ public class ScrapingScoreFromTrainings {
               .exchangeToFlux(response -> response.bodyToFlux(TrainingDTO.class));
     }
     public Flux<Void> apply(){
-      return  getAll().map(traing -> {
-
-        var scrapsDTO = createScrapDtoFromTrainingUseCase.apply(traing, LocalDate.now());
+      return  getAll().map(training -> {
+        var scrapsDTO = createScrapDtoFromTrainingUseCase.apply(training, LocalDate.now());
         scrapsDTO.forEach(scraps -> logger.info(scraps.toString()));
         return null;
       });

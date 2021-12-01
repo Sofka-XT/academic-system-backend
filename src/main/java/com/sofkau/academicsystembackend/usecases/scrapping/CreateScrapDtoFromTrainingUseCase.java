@@ -16,12 +16,12 @@ public class  CreateScrapDtoFromTrainingUseCase {
 
   public List<ScrapDTO> apply(TrainingDTO trainingDTO,LocalDate localDate){
     var emailsStudents = getEmailsToApprentices(trainingDTO.getApprentices());
-    var mapFiltred = trainingDTO.getCategoriesToScraps().get(localDate.toString());
-    logger.warn(LocalDate.now().toString());
-    if(mapFiltred == null){
+    var mapFiltered = trainingDTO.getCategoriesToScraps().get(localDate.toString());
+    if(mapFiltered == null){
       return  null;
     }
-    return mapFiltred.stream().map(categoryToScrap -> new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList());
+    return mapFiltered.stream().map(categoryToScrap ->
+            new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList());
   }
 
   private List<String> getEmailsToApprentices(List<Apprentice> apprentices){
