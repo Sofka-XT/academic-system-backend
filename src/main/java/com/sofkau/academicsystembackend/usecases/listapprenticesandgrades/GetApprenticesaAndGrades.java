@@ -1,29 +1,30 @@
 package com.sofkau.academicsystembackend.usecases.listapprenticesandgrades;
 
-import com.sofkau.academicsystembackend.models.training.TrainingDTO;
-import com.sofkau.academicsystembackend.usecases.listactivetraining.GetActiveTrainingsUseCase;
+import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
+import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
+import com.sofkau.academicsystembackend.usecases.apprentice.MapperUtilsApprenticeScore;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.function.Function;
-import java.util.function.Supplier;
+
 
 @Service
 @Validated
-public class GetApprenticesaAndGrades implements Function<String, Mono<Object>> {
+public class GetApprenticesaAndGrades implements Function<String, Mono<ApprenticeScoreDTO>> {
 
-    private final GetActiveTrainingsUseCase getActiveTrainingsUseCase;
+    private final ApprenticeScoreRepository apprenticeScoreRepository;
+    private final MapperUtilsApprenticeScore mapperUtilsApprenticeScore;
 
-    public GetApprenticesaAndGrades(GetActiveTrainingsUseCase getActiveTrainingsUseCase) {
-        this.getActiveTrainingsUseCase = getActiveTrainingsUseCase;
+    public GetApprenticesaAndGrades(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
+        this.apprenticeScoreRepository = apprenticeScoreRepository;
+        this.mapperUtilsApprenticeScore = mapperUtilsApprenticeScore;
     }
 
-
     @Override
-    public Mono<Object> apply(String email) {
-        return getActiveTrainingsUseCase.get().filter(trainingDTO -> trainingDTO.getTrainingId().equals("q")).elementAt(0).map(TrainingDTO::getApprentices);
+    public Mono<ApprenticeScoreDTO> apply(String email) {
+        return apprenticeScoreRepository.findApprenticeByEmail(email).map(mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO());
     }
 }
 
