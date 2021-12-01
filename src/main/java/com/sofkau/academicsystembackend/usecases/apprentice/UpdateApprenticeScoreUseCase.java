@@ -1,12 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.apprentice;
 
-import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
-import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
 import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
-import com.sofkau.academicsystembackend.models.program.ProgramDTO;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
-import com.sofkau.academicsystembackend.repositories.ProgramRepository;
-import com.sofkau.academicsystembackend.usecases.program.MapperUtilsProgram;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
