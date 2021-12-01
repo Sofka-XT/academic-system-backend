@@ -20,6 +20,7 @@ public class CreateApprenticeScoreUseCase implements SaveApprentice{
         this.apprenticeScoreRepository = apprenticeScoreRepository;
     }
 
+
     @Override
     public Mono<ApprenticeScoreDTO> apply(ApprenticeScoreDTO apprenticeScoreDTO) {
         return apprenticeScoreRepository.save(mapperUtilsApprenticeScore.mapperToApprenticeScore().apply(apprenticeScoreDTO)).
