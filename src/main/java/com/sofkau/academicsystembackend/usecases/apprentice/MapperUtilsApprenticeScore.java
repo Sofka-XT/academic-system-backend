@@ -2,9 +2,11 @@ package com.sofkau.academicsystembackend.usecases.apprentice;
 
 import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+@Component
 public class MapperUtilsApprenticeScore {
     public Function<ApprenticeScoreDTO, ApprenticeScore> mapperToApprenticeScore(){
         return apprenticeScoreDTO -> {

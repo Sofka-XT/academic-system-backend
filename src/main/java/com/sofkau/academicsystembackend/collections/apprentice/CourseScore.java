@@ -3,7 +3,7 @@ package com.sofkau.academicsystembackend.collections.apprentice;
 import java.util.List;
 
 public class CourseScore {
-    private String categoryId;
+    private String courseId;
     private String courseName;
     private List<CategoryScore> categoryScoreList;
 
@@ -11,18 +11,18 @@ public class CourseScore {
 
     }
 
-    public CourseScore(String categoryId, String courseName, List<CategoryScore> categoryScoreList) {
-        this.categoryId = categoryId;
+    public CourseScore(String courseId, String courseName, List<CategoryScore> categoryScoreList) {
+        this.courseId = courseId;
         this.courseName = courseName;
         this.categoryScoreList = categoryScoreList;
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    public String getCourseId() {
+        return courseId;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {

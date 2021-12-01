@@ -12,19 +12,20 @@ import java.util.function.Function;
 
 @Service
 @Validated
-public class GetApprenticesaAndGrades implements Function<String, Mono<ApprenticeScoreDTO>> {
+public class GetApprenticesAndGradesUseCase implements Function<String, Mono<ApprenticeScoreDTO>> {
 
     private final ApprenticeScoreRepository apprenticeScoreRepository;
     private final MapperUtilsApprenticeScore mapperUtilsApprenticeScore;
 
-    public GetApprenticesaAndGrades(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
+    public GetApprenticesAndGradesUseCase(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
         this.apprenticeScoreRepository = apprenticeScoreRepository;
         this.mapperUtilsApprenticeScore = mapperUtilsApprenticeScore;
     }
 
     @Override
     public Mono<ApprenticeScoreDTO> apply(String email) {
-        return apprenticeScoreRepository.findApprenticeByEmail(email).map(mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO());
+        System.out.println("caso de uso");
+        return apprenticeScoreRepository.findByEmail(email).map(mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO());
     }
 }
 

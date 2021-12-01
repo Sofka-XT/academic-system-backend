@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Mono;
 
 public interface ApprenticeScoreRepository extends ReactiveMongoRepository <ApprenticeScore,String> {
-    Mono<ApprenticeScore> findApprenticeByEmail(String email);
+    Mono<ApprenticeScore> findByEmail(String email);
 }

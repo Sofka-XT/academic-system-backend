@@ -10,7 +10,7 @@ import java.util.List;
 @Document
 public class ApprenticeScore {
 
-    @Id
+
     @NotBlank(message = "apprentice must have an email")
     private String email;
     @NotBlank(message = "apprentice must have a name")
