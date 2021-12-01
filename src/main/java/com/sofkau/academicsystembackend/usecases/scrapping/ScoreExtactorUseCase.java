@@ -14,7 +14,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
-public class ScoreExtactorUseCase implements Function<scrapDTO, Mono<List<Score>>> {
+public class ScoreExtactorUseCase  implements Function<scrapDTO, Mono<List<Score>>>{
 
     private final SeleniumProcessLogin seleniumProcessLogin;
     private final ExtractScoreUseCase extractScoreUseCase;
@@ -26,6 +26,6 @@ public class ScoreExtactorUseCase implements Function<scrapDTO, Mono<List<Score>
 
     @Override
     public Mono<List<Score>> apply(scrapDTO scrapDto) {
-        return Mono.just(extractScoreUseCase.apply(scrapDto.getCategoriesToScraps().get(0).getCategoryURL(),scrapDto.getStudentsEmails()));
+        return Mono.just(extractScoreUseCase.apply(scrapDto.getCategoriesToScraps().get(0).getCategoryURL().get(0),scrapDto.getStudentsEmails()));
     }
 }
