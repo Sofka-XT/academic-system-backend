@@ -9,7 +9,6 @@ public class CategoryScore {
     private Integer score;
     private LocalDate updateScoreDate;
 
-
     public CategoryScore() {
     }
 
