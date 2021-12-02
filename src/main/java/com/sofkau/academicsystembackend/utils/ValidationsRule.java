@@ -51,7 +51,7 @@ public class ValidationsRule {
 
     private boolean isPositiveAverage(String average){
 
-        int averageNumber = Integer.parseInt(average.trim());
+        int averageNumber = average.equals("") ? -1 : Integer.parseInt(average.trim());
 
         if(averageNumber < 0 || averageNumber >100){
             return false;
