@@ -31,8 +31,6 @@ public class ScoreExtactorUseCase implements Function<ScrapDTO, Mono<List<Score>
         var grades = extractScoreUseCase.apply(scrapDTO.getCategoriesToScraps().getCategoryURL().get(0), scrapDTO.getStudentsEmails());
         System.out.println("grades.size() = " + grades.size());
         grades.forEach(score -> {
-            System.out.println("score.getName() = " + score.getName());
-            System.out.println("score.getGrade() = " + score.getGrade());
             updateGradesApprenticeUseCase.updateApprentice(
                     new ScoreDTO(score.getName(), scrapDTO.getCategoriesToScraps().getCourseId(), scrapDTO.getCategoriesToScraps().getCategoryId(), Integer.valueOf((int) Double.parseDouble(score.getGrade().replace("%", "")))));
         });

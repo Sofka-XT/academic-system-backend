@@ -41,11 +41,7 @@ class ScoreExtactorUseCaseTest {
     @DisplayName("Test para validar la extracción de notas del campus")
     void extractScoreUseCaseSuccess() {
         ArrayList<String> emails = new ArrayList<>();
-        emails.add("ktns0930@gmail.com");
         emails.add("juanfth2001@gmail.com");
-        emails.add("141013@unsaac.edu.pe");
-        emails.add("sebasruigalle62@gmail.com");
-        emails.add("yamsoncalapzu@gmail.com");
         ArrayList<String> uris = new ArrayList<>();
         uris.add("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:");
         var scrap = new CategoryToScrap("c-111", uris, "cu-111");
@@ -53,8 +49,10 @@ class ScoreExtactorUseCaseTest {
         var apprentice = new ApprenticeScore("juanfth2001@gmail.com", "Hola", "ccccc", "2323232",
                 List.of(new CourseScore("vvv", "zzzz", List.of(new CategoryScore("122", "1222", 85)))));
        var dtoApprentice = new ScoreDTO("juanfth2001@gmail.com", "C-111","Ca-111", 85);
+
         Mockito.when(apprenticeScoreRepository.findById("juanfth2001@gmail.com")).thenReturn(Mono.just(apprentice));
         Mockito.when(updateApprenticeScoreUseCase.updateApprentice(dtoApprentice)).thenReturn(Mono.just("juanfth2001@gmail.com"));
+
         scoreExtactorUseCase.apply(dto).subscribe(
                 result -> {
                     result.forEach(System.out::println);
