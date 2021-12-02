@@ -33,8 +33,8 @@ class DeleteProgramUseCaseTest {
     @Test
     void DeleteProgram(){
         List<Time> time = new ArrayList<>();
-        time.add(new Time("categoryid1",6,"categoryName1"));
-        time.add(new Time("categoryid2",2,"categoryName2"));
+        time.add(new Time("categoryid1",6,"categoryName1", new ArrayList<>()));
+        time.add(new Time("categoryid2",2,"categoryName2", new ArrayList<>()));
 
         List<CourseTime> courseTimes = new ArrayList<>();
         courseTimes.add(new CourseTime("idcoursetime","firstCourse",time));

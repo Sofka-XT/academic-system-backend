@@ -13,21 +13,20 @@ public class MapperUtilsApprenticeScore {
             var apprentice = new ApprenticeScore();
             apprentice.setApprenticeName(apprenticeScoreDTO.getApprenticeName());
             apprentice.setEmail(apprenticeScoreDTO.getEmail());
-            apprentice.setPhoneNumber(apprentice.getPhoneNumber());
+            apprentice.setPhoneNumber(apprenticeScoreDTO.getPhoneNumber());
             apprentice.setTrainingId(apprenticeScoreDTO.getTrainingId());
-            apprentice.setCourseScores(apprentice.getCourseScores());
+            apprentice.setCourseScores(apprenticeScoreDTO.getCourseScores());
             return apprentice;
         };
     }
 
     public Function<ApprenticeScore, ApprenticeScoreDTO> mapperEntityToApprenticeScoreDTO(){
         return apprentice -> new ApprenticeScoreDTO(
-            apprentice.getEmail(),
+                apprentice.getEmail(),
                 apprentice.getApprenticeName(),
                 apprentice.getTrainingId(),
                 apprentice.getPhoneNumber(),
                 apprentice.getCourseScores()
-
         );
     }
 }
