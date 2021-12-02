@@ -3,32 +3,38 @@ package com.sofkau.academicsystembackend.usecases.scrapping;
 import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
 import com.sofkau.academicsystembackend.extraction.Score;
 import com.sofkau.academicsystembackend.extraction.SeleniumProcessLogin;
-import com.sofkau.academicsystembackend.models.scrap.scrapDTO;
+import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
+import com.sofkau.academicsystembackend.models.scrap.ScrapDTO;
+import com.sofkau.academicsystembackend.usecases.apprentice.UpdateApprenticeScoreUseCase;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 
 
 @Service
-public class ScoreExtactorUseCase implements Function<scrapDTO, Mono<List<Score>>> {
+public class ScoreExtactorUseCase implements Function<ScrapDTO, Mono<List<Score>>> {
 
     SeleniumProcessLogin seleniumProcessLogin = new SeleniumProcessLogin();
     private final ExtractScoreUseCase extractScoreUseCase;
-    private final UpdateGradesApprenticeUseCase updateGradesApprenticeUseCase;
+    private final UpdateApprenticeScoreUseCase updateGradesApprenticeUseCase;
 
-    public ScoreExtactorUseCase(UpdateGradesApprenticeUseCase updateGradesApprenticeUseCase) {
-        this.updateGradesApprenticeUseCase = updateGradesApprenticeUseCase;
+    public ScoreExtactorUseCase(UpdateApprenticeScoreUseCase updateApprenticeScoreUseCase) {
+        this.updateGradesApprenticeUseCase = updateApprenticeScoreUseCase;
         this.extractScoreUseCase = new ExtractScoreUseCase(seleniumProcessLogin);
     }
 
+
     @Override
-    public Mono<List<Score>> apply(scrapDTO scrapDto) {
-        var grades = extractScoreUseCase.apply(scrapDto.getCategoriesToScraps().get(0).getCategoryURL().get(0), scrapDto.getStudentsEmails());
+    public Mono<List<Score>> apply(ScrapDTO scrapDTO) {
+        var grades = extractScoreUseCase.apply(scrapDTO.getCategoriesToScraps().getCategoryURL().get(0), scrapDTO.getStudentsEmails());
+        System.out.println("grades.size() = " + grades.size());
         grades.forEach(score -> {
-            updateGradesApprenticeUseCase.apply( Map.of("email", score.getName(), "courseId", scrapDto.getCategoriesToScraps().get(0).getCourseId(), "categoryId", scrapDto.getCategoriesToScraps().get(0).getCategoryId(), "score", score.getGrade()));
+            System.out.println("score.getName() = " + score.getName());
+            System.out.println("score.getGrade() = " + score.getGrade());
+            updateGradesApprenticeUseCase.updateApprentice(
+                    new ScoreDTO(score.getName(), scrapDTO.getCategoriesToScraps().getCourseId(), scrapDTO.getCategoriesToScraps().getCategoryId(), Integer.valueOf((int) Double.parseDouble(score.getGrade().replace("%", "")))));
         });
         return Mono.just(grades);
     }
