@@ -15,10 +15,12 @@ public class ValidationsCourse {
 
     private final CourseRepository courseRepository;
     private final MapperUtilsCourse mapperUtilsCourse;
+    private final ValidationsRule validationsRule;
 
     public ValidationsCourse(CourseRepository courseRepository, MapperUtilsCourse mapperUtilsCourse) {
         this.courseRepository = courseRepository;
         this.mapperUtilsCourse = mapperUtilsCourse;
+        this.validationsRule = new ValidationsRule();
     }
 
     //region Validate Category
@@ -78,7 +80,7 @@ public class ValidationsCourse {
     }
     //endregion
 
-    //Validatios NameCourse
+    //region Validatios NameCourse
 
     private boolean isNameInvalid(CourseDTO courseDTO) {
         return courseDTO.getName() == null || courseDTO.getName().isEmpty() || courseDTO.getName().length() > 100;
@@ -108,6 +110,8 @@ public class ValidationsCourse {
         Mono<CourseDTO> error = dataValidation(courseDTO);
         if (error != null) return error;
         error = validateRepeatCategoryNameCourse(courseDTO);
+        if (error != null) return error;
+        error = validationsRule.validateRules(courseDTO);
         if (error != null) return error;
         return null;
     }
