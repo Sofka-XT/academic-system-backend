@@ -19,6 +19,7 @@ public class MapperUtilsActiveTraining {
             training.setStartingDate(trainingDTO.getStartingDate());
             training.setApprentices(trainingDTO.getApprentices());
             training.setCoaches(trainingDTO.getCoaches());
+            training.setCategoriesToScrapCalendar(training.getCategoriesToScrapCalendar());
             return training;
         };
     }
@@ -30,8 +31,7 @@ public class MapperUtilsActiveTraining {
                 training.getStartingDate(),
                 training.getApprentices(),
                 training.getCoaches(),
-                //Aqui hay que mappear el hash map de calendar
-                new HashMap<>()
+                new HashMap<>(training.getCategoriesToScrapCalendar())
         );
     }
 }

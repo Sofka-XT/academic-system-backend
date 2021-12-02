@@ -7,6 +7,7 @@ import com.sofkau.academicsystembackend.collections.program.Time;
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
 import com.sofkau.academicsystembackend.collections.training.Coach;
 import com.sofkau.academicsystembackend.collections.training.Training;
+import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.repositories.ProgramRepository;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
 import org.junit.jupiter.api.Assertions;
@@ -175,15 +176,42 @@ public class GetActiveTrainingsUseCaseTest {
         return coachList;
     }
 
+    public List<String> generateUrl(){
+        String categoryURL = "sofka.com";
+        ArrayList<String> categoryURLList = new ArrayList<>();
+        categoryURLList.add(categoryURL);
+
+        return categoryURLList;
+    }
+
+    public List<CategoryToScrap> generateCategoryToScrap(){
+
+        var categoryURL = generateUrl();
+        CategoryToScrap categoryToScrap = new CategoryToScrap("1", categoryURL, "1", 10);
+        ArrayList<CategoryToScrap> categoryToScrapList = new ArrayList<>();
+        categoryToScrapList.add(categoryToScrap);
+
+        return categoryToScrapList;
+    }
+
+    public Map<String, List<CategoryToScrap>> generateCategoriesToScrapCalendar(){
+        var categoryToScrap = generateCategoryToScrap();
+        Map<String,  List<CategoryToScrap>> categoriesToScrapCalendarMap = new HashMap<String,List<CategoryToScrap>>();
+        categoriesToScrapCalendarMap.put("1", categoryToScrap);
+
+        return categoriesToScrapCalendarMap;
+    }
+
     public List<Training> generateTraining() {
 
         var program = generateProgram();
         var apprentice = generateApprentice();
         var coach = generateCoach();
+        var categoriesToScrapCalendar = generateCategoriesToScrapCalendar();
 
-        Training training = new Training("1", "train xxxx", program.get(0).getId(), LocalDate.now(), apprentice, coach, new HashMap<>());
-        Training training2 = new Training("2", "train yyyy", program.get(1).getId(), LocalDate.of(2020, 4, 27), apprentice, coach, new HashMap<>());
-        Training training3 = new Training("3", "training zzzz", program.get(2).getId(), LocalDate.of(2021, 11, 18), apprentice, coach, new HashMap<>());
+        Training training = new Training("1", "train xxxx", program.get(0).getId(), LocalDate.now(), apprentice, coach, categoriesToScrapCalendar);
+        Training training2 = new Training("2", "train yyyy", program.get(1).getId(), LocalDate.of(2020, 4, 27), apprentice, coach, categoriesToScrapCalendar);
+        Training training3 = new Training("3", "training zzzz", program.get(2).getId(), LocalDate.of(2021, 11, 18), apprentice, coach, categoriesToScrapCalendar);
 
         ArrayList<Training> trainingList = new ArrayList<Training>();
         trainingList.add(training);
