@@ -181,9 +181,9 @@ public class GetActiveTrainingsUseCaseTest {
         var apprentice = generateApprentice();
         var coach = generateCoach();
 
-        Training training = new Training("1", "train xxxx", program.get(0).getId(), LocalDate.now(), apprentice, coach);
-        Training training2 = new Training("2", "train yyyy", program.get(1).getId(), LocalDate.of(2020, 4, 27), apprentice, coach);
-        Training training3 = new Training("3", "training zzzz", program.get(2).getId(), LocalDate.of(2021, 11, 18), apprentice, coach);
+        Training training = new Training("1", "train xxxx", program.get(0).getId(), LocalDate.now(), apprentice, coach, new HashMap<>());
+        Training training2 = new Training("2", "train yyyy", program.get(1).getId(), LocalDate.of(2020, 4, 27), apprentice, coach, new HashMap<>());
+        Training training3 = new Training("3", "training zzzz", program.get(2).getId(), LocalDate.of(2021, 11, 18), apprentice, coach, new HashMap<>());
 
         ArrayList<Training> trainingList = new ArrayList<Training>();
         trainingList.add(training);

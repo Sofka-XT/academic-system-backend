@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 
 public class TrainingDTO {
@@ -16,6 +17,7 @@ public class TrainingDTO {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
+    private Map<String, List<CategoryToScrap>> categoriesToScrapCalendar;
 
 
     public TrainingDTO() {
@@ -25,13 +27,14 @@ public class TrainingDTO {
         this.trainingId = trainingId;
     }
 
-    public TrainingDTO(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches) {
+    public TrainingDTO(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches, Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
         this.trainingId = trainingId;
         this.name = name;
         this.programId = programId;
         this.startingDate = startingDate;
         this.apprentices = apprentices;
         this.coaches = coaches;
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
 
@@ -82,6 +85,22 @@ public class TrainingDTO {
 
     public void setCoaches(List<Coach> coaches) {
         this.coaches = coaches;
+    }
+
+    public String getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(String programId) {
+        this.programId = programId;
+    }
+
+    public Map<String, List<CategoryToScrap>> getCategoriesToScrapCalendar() {
+        return categoriesToScrapCalendar;
+    }
+
+    public void setCategoriesToScrapCalendar(Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
     @Override

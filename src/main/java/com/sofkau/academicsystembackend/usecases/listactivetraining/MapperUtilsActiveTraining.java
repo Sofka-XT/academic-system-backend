@@ -4,6 +4,7 @@ import com.sofkau.academicsystembackend.collections.training.Training;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.function.Function;
 
 @Component
@@ -28,7 +29,9 @@ public class MapperUtilsActiveTraining {
                 training.getProgram(),
                 training.getStartingDate(),
                 training.getApprentices(),
-                training.getCoaches()
+                training.getCoaches(),
+                //Aqui hay que mappear el hash map de calendar
+                new HashMap<>()
         );
     }
 }

@@ -1,10 +1,12 @@
 package com.sofkau.academicsystembackend.collections.training;
 
+import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Document
 public class Training {
@@ -15,18 +17,20 @@ public class Training {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
+    private Map<String, List<CategoryToScrap>> categoriesToScrapCalendar;
 
 
     public Training() {
     }
 
-    public Training(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches) {
+    public Training(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches, Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
         this.trainingId = trainingId;
         this.name = name;
         this.programId = programId;
         this.startingDate = startingDate;
         this.apprentices = apprentices;
         this.coaches = coaches;
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
     public String getTrainingId() {
@@ -75,6 +79,22 @@ public class Training {
 
     public void setCoaches(List<Coach> coaches) {
         this.coaches = coaches;
+    }
+
+    public String getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(String programId) {
+        this.programId = programId;
+    }
+
+    public Map<String, List<CategoryToScrap>> getCategoriesToScrapCalendar() {
+        return categoriesToScrapCalendar;
+    }
+
+    public void setCategoriesToScrapCalendar(Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
     @Override
