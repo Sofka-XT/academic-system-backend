@@ -19,7 +19,7 @@ public class MapperUtilsActiveTraining {
             training.setStartingDate(trainingDTO.getStartingDate());
             training.setApprentices(trainingDTO.getApprentices());
             training.setCoaches(trainingDTO.getCoaches());
-            training.setCategoriesToScrapCalendar(training.getCategoriesToScrapCalendar());
+            training.setCategoriesToScrapCalendar(trainingDTO.getCategoriesToScrapCalendar());
             return training;
         };
     }
@@ -31,7 +31,7 @@ public class MapperUtilsActiveTraining {
                 training.getStartingDate(),
                 training.getApprentices(),
                 training.getCoaches(),
-                new HashMap<>(training.getCategoriesToScrapCalendar())
+                training.getCategoriesToScrapCalendar()
         );
     }
 }
