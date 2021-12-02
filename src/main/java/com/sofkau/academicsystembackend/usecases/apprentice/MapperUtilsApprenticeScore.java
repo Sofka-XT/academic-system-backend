@@ -22,12 +22,11 @@ public class MapperUtilsApprenticeScore {
 
     public Function<ApprenticeScore, ApprenticeScoreDTO> mapperEntityToApprenticeScoreDTO(){
         return apprentice -> new ApprenticeScoreDTO(
-            apprentice.getEmail(),
+                apprentice.getEmail(),
                 apprentice.getApprenticeName(),
                 apprentice.getTrainingId(),
                 apprentice.getPhoneNumber(),
                 apprentice.getCourseScores()
-
         );
     }
 }
