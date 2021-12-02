@@ -36,9 +36,9 @@ class CreateCourseUseCaseTest {
     void createCourseSeccessTest() {
         ArrayList<Rule> rules = new ArrayList<>(Arrays.asList(
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
-                new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
-                new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
-        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
+                new Rule(Type.SUCCESS, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
+                new Rule(Type.WARNING, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category("programación funcional", rules)));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
                 categories);
         var course = new Course();
@@ -66,12 +66,12 @@ class CreateCourseUseCaseTest {
     void createCourseNoSeccessTest() {
         ArrayList<Rule> rules = new ArrayList<>(Arrays.asList(
                 new Rule(Type.DANGER, "<", "40", new Feedback("no sigas así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
-                new Rule(Type.DANGER, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
-                new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
+                new Rule(Type.SUCCESS, "<", "70", new Feedback("mejora campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
+                new Rule(Type.WARNING, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO")),
                 new Rule(Type.DANGER, "=", "100", new Feedback("sigue así campeon", "https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"))));
-        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category( "programación funcional", rules) ));
+        ArrayList<Category> categories = new ArrayList<>(Arrays.asList(new Category("programación funcional", rules)));
         var courseDTO = new CourseDTO("C-111", "programacion reactiva y funcional",
-        categories);
+                categories);
         var course = new Course();
         course.setId("C-111");
         course.setName("programacion reactiva y funcional");
@@ -83,8 +83,9 @@ class CreateCourseUseCaseTest {
 
         StepVerifier.create(createCourseUseCase.apply(courseDTO))
                 .expectErrorMatches(throwable -> throwable instanceof IllegalArgumentException &&
-                throwable.getMessage().equals("Las reglas solo deben ser tres por categoria")).verify();
+                        throwable.getMessage().equals("Las reglas solo deben ser tres por categoria") ||
+                        throwable.getMessage().equals("[El tipo se encuentra repetido, El tipo se encuentra repetido]")).verify();
 
-}
+    }
 
 }
