@@ -1,11 +1,12 @@
 package com.sofkau.academicsystembackend.models.training;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryToScrap {
 
     private String categoryId;
-    private List<String> categoryURL;
+    private List<String> categoryURL = new ArrayList<>();
     private String courseId;
     private int duration;
 
