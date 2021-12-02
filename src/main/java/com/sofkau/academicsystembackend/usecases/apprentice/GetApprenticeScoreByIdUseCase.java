@@ -1,20 +1,22 @@
 package com.sofkau.academicsystembackend.usecases.apprentice;
 
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
-import com.sofkau.academicsystembackend.models.program.ProgramDTO;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
 
 import java.util.Objects;
 import java.util.function.Function;
 
-@Configuration
-public class GetApprenticeScoreById implements Function<String, Mono<ApprenticeScoreDTO>> {
+@Service
+@Validated
+public class GetApprenticeScoreByIdUseCase implements Function<String, Mono<ApprenticeScoreDTO>> {
     private final ApprenticeScoreRepository apprenticeScoreRepository;
     private final MapperUtilsApprenticeScore mapperUtilsApprenticeScore;
 
-    public GetApprenticeScoreById(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
+    public GetApprenticeScoreByIdUseCase(ApprenticeScoreRepository apprenticeScoreRepository, MapperUtilsApprenticeScore mapperUtilsApprenticeScore) {
         this.apprenticeScoreRepository = apprenticeScoreRepository;
         this.mapperUtilsApprenticeScore = mapperUtilsApprenticeScore;
     }
