@@ -3,10 +3,12 @@ package com.sofkau.academicsystembackend.extraction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class SeleniumProcessLogin implements ProcessLogin {
     protected WebDriver driver;
     private static final String URL_BASE = "https://campus.sofka.com.co";

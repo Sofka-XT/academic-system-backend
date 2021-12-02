@@ -3,12 +3,14 @@ package com.sofkau.academicsystembackend.extraction;
 import com.google.gson.Gson;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
+@Service
 public class ExtractScoreUseCase implements BiFunction<String,List<String>, List<Score>> {
     private static final String URL_BASE = "https://campus.sofka.com.co";
     private final ProcessLogin processLogin;

@@ -4,6 +4,8 @@ package com.sofkau.academicsystembackend.usecases.scrapping;
 import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
 import com.sofkau.academicsystembackend.collections.apprentice.CategoryScore;
 import com.sofkau.academicsystembackend.collections.apprentice.CourseScore;
+import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
+import com.sofkau.academicsystembackend.extraction.Score;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
 import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
 import com.sofkau.academicsystembackend.models.scrap.ApprenticeDTO;
@@ -11,31 +13,40 @@ import com.sofkau.academicsystembackend.models.scrap.ScrapDTO;
 import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
 import com.sofkau.academicsystembackend.usecases.apprentice.UpdateApprenticeScoreUseCase;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.ArgumentMatchers.any;
 
-@RunWith(MockitoJUnitRunner.class)
+
+@ExtendWith(MockitoExtension.class)
 class ScoreExtactorUseCaseTest {
+    @InjectMocks
     ScoreExtactorUseCase scoreExtactorUseCase;
+
+    @Mock
     ApprenticeScoreRepository apprenticeScoreRepository;
+    @Mock
     UpdateApprenticeScoreUseCase updateApprenticeScoreUseCase;
 
-    @BeforeEach
-    void setUp() {
-        apprenticeScoreRepository = Mockito.mock(ApprenticeScoreRepository.class);
-        updateApprenticeScoreUseCase = new UpdateApprenticeScoreUseCase(apprenticeScoreRepository);
-        scoreExtactorUseCase = new ScoreExtactorUseCase(updateApprenticeScoreUseCase);
-    }
+    @Mock
+     ExtractScoreUseCase extractScoreUseCase;
+
 
     @Test
     @DisplayName("Test para validar la extracción de notas del campus")
@@ -46,17 +57,17 @@ class ScoreExtactorUseCaseTest {
         uris.add("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:");
         var scrap = new CategoryToScrap("c-111", uris, "cu-111");
         var dto = new ScrapDTO(emails, scrap);
-        var apprentice = new ApprenticeScore("juanfth2001@gmail.com", "Hola", "ccccc", "2323232",
-                List.of(new CourseScore("vvv", "zzzz", List.of(new CategoryScore("122", "1222", 85)))));
-       var dtoApprentice = new ScoreDTO("juanfth2001@gmail.com", "C-111","Ca-111", 85);
 
-        Mockito.when(apprenticeScoreRepository.findById("juanfth2001@gmail.com")).thenReturn(Mono.just(apprentice));
-        Mockito.when(updateApprenticeScoreUseCase.updateApprentice(dtoApprentice)).thenReturn(Mono.just("juanfth2001@gmail.com"));
+        Mockito.when(updateApprenticeScoreUseCase.updateApprentice(any())).thenReturn(Mono.just("juanfth2001@gmail.com"));
 
-        scoreExtactorUseCase.apply(dto).subscribe(
-                result -> {
-                    result.forEach(System.out::println);
-                });
+        var score = new Score();
+        score.setGrade("30%");
+        score.setName("juanfth2001@gmail.com");
+        Mockito.when(extractScoreUseCase.apply(any(), any())).thenReturn(Lists.list(score));
+
+        StepVerifier.create(scoreExtactorUseCase.apply(dto))
+                .expectNext("juanfth2001@gmail.com")
+                .verifyComplete();
 
     }
 
