@@ -1,7 +1,7 @@
 package com.sofkau.academicsystembackend.routers.apprentice;
 
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
-import com.sofkau.academicsystembackend.usecases.apprentice.GetApprenticeScoreById;
+import com.sofkau.academicsystembackend.usecases.apprentice.GetApprenticeScoreByIdUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -16,13 +16,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 @Configuration
 public class GetApprenticebyIdRouter {
     @Bean
-    public RouterFunction<ServerResponse> getApprenticeById(GetApprenticeScoreById getApprenticeScoreById){
+    public RouterFunction<ServerResponse> getApprenticeById(GetApprenticeScoreByIdUseCase getApprenticeScoreByIdUseCase){
 
         return route(
                 GET("/apprentice/getById/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
-                        .body(BodyInserters.fromPublisher(getApprenticeScoreById.apply(request.pathVariable("id")), ApprenticeScoreDTO.class))
+                        .body(BodyInserters.fromPublisher(getApprenticeScoreByIdUseCase.apply(request.pathVariable("id")), ApprenticeScoreDTO.class))
         );
     }
 }
