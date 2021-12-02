@@ -1,5 +1,6 @@
 package com.sofkau.academicsystembackend.utils;
 
+
 import com.sofkau.academicsystembackend.collections.course.Category;
 import com.sofkau.academicsystembackend.collections.course.Rule;
 import com.sofkau.academicsystembackend.collections.course.Type;
@@ -7,6 +8,7 @@ import com.sofkau.academicsystembackend.models.course.CourseDTO;
 import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,11 +21,13 @@ public class ValidationsRule {
     private final static String CONDITION_OUT_OF_RANGE_AVERAGE = "La condición no concuerda con el promedio";
 
     public Mono<CourseDTO> validateRules(CourseDTO courseDTO) {
+
         List<String> validations = new ArrayList<>();
 
         courseDTO.getCategories()
                 .forEach(category -> category.getRules()
                         .forEach(rule -> {
+
                             if (!isValidConditionRule(rule.getCondition())) {
                                 validations.add(CONDITION);
                             }
@@ -39,14 +43,17 @@ public class ValidationsRule {
                         }));
 
         if (!validations.isEmpty()) {
+
             return Mono.error(new IllegalArgumentException(validations.toString()));
         }
 
         return null;
     }
 
+
     private boolean isValidConditionRule(String condition) {
         switch (condition) {
+
             case ">":
                 return true;
             case "<":
@@ -58,6 +65,7 @@ public class ValidationsRule {
         }
     }
 
+
     private boolean isValidAverage(String average) {
         return average.matches("[+-]?\\d*(\\.\\d+)?") && isAverageInRange(average);
     }
@@ -67,6 +75,7 @@ public class ValidationsRule {
         int averageNumber = average.equals("") ? -1 : Integer.parseInt(average.trim());
 
         if (averageNumber < 0 || averageNumber > 100) {
+
             return false;
         }
 
@@ -85,4 +94,5 @@ public class ValidationsRule {
     }
 
     //endregion
+
 }
