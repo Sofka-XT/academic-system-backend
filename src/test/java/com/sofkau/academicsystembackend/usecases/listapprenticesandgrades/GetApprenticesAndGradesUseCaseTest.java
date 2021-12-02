@@ -53,7 +53,7 @@ public class GetApprenticesAndGradesUseCaseTest {
 
         when(apprenticeScoreRepository.save(any())).thenReturn(mono);
 
-        Mockito.when(apprenticeScoreRepository.findByEmail(apprenticeScoreDTO.getEmail())).thenReturn(Mono.just(apprenticeScore));
+        Mockito.when(apprenticeScoreRepository.findById(apprenticeScoreDTO.getEmail())).thenReturn(Mono.just(apprenticeScore));
 
         var result = getApprenticesAndGradesUseCase.apply("apprentice@mail.com");
 

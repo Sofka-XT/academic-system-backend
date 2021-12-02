@@ -25,7 +25,7 @@ public class GetApprenticesAndGradesUseCase implements Function<String, Mono<App
     @Override
     public Mono<ApprenticeScoreDTO> apply(String email) {
         System.out.println("caso de uso");
-        return apprenticeScoreRepository.findByEmail(email).map(mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO());
+        return apprenticeScoreRepository.findById(email).map(mapperUtilsApprenticeScore.mapperEntityToApprenticeScoreDTO());
     }
 }
 
