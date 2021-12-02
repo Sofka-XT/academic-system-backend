@@ -2,6 +2,7 @@ package com.sofkau.academicsystembackend.usecases.training;
 
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import com.sofkau.academicsystembackend.repositories.TrainingRepository;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import reactor.core.publisher.Mono;
@@ -22,10 +23,7 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     @Override
     public Mono<TrainingDTO> apply(TrainingDTO trainingDTO) {
-
         return trainingRepository.save(trainingMapper.mapperToTraining()
-                        .apply(trainingDTO))
-                .map(training -> trainingMapper.mapperEntityToTrainingDTO()
-                        .apply(training));
+                        .apply(trainingDTO)).map(training -> trainingMapper.mapperEntityToTrainingDTO().apply(training));
     }
 }

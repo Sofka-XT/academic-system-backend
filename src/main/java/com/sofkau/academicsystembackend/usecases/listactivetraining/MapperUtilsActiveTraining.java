@@ -4,6 +4,7 @@ import com.sofkau.academicsystembackend.collections.training.Training;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.function.Function;
 
 @Component
@@ -18,6 +19,7 @@ public class MapperUtilsActiveTraining {
             training.setStartingDate(trainingDTO.getStartingDate());
             training.setApprentices(trainingDTO.getApprentices());
             training.setCoaches(trainingDTO.getCoaches());
+            training.setCategoriesToScrapCalendar(trainingDTO.getCategoriesToScrapCalendar());
             return training;
         };
     }
@@ -28,7 +30,8 @@ public class MapperUtilsActiveTraining {
                 training.getProgram(),
                 training.getStartingDate(),
                 training.getApprentices(),
-                training.getCoaches()
+                training.getCoaches(),
+                training.getCategoriesToScrapCalendar()
         );
     }
 }
