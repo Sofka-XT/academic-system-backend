@@ -14,24 +14,19 @@ import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
 import com.sofkau.academicsystembackend.usecases.apprentice.UpdateApprenticeScoreUseCase;
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.refEq;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -63,7 +58,7 @@ class ScoreExtactorUseCaseTest {
         var score = new Score();
         score.setGrade("30%");
         score.setName("juanfth2001@gmail.com");
-        Mockito.when(extractScoreUseCase.apply(any(), any())).thenReturn(Lists.list(score));
+        Mockito.when(extractScoreUseCase.apply(refEq(dto.getCategoriesToScraps().getCategoryURL().get(0)), refEq(dto.getStudentsEmails()))).thenReturn(Lists.list(score));
 
         StepVerifier.create(scoreExtactorUseCase.apply(dto))
                 .expectNext("juanfth2001@gmail.com")
