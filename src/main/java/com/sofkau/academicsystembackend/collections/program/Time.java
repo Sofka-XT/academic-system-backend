@@ -1,19 +1,23 @@
 package com.sofkau.academicsystembackend.collections.program;
 
+import java.util.List;
+
 public class Time {
 
     private String categoryId;
     private Integer days;
     private String categoryName;
+    private List<String> urlsRefGradles;
 
     public Time(){
 
     }
 
-    public Time(String categoryId, Integer days, String categoryName) {
+    public Time(String categoryId, Integer days, String categoryName, List<String> urlsRefGradles) {
         this.categoryId = categoryId;
         this.days = days;
         this.categoryName = categoryName;
+        this.urlsRefGradles = urlsRefGradles;
     }
 
     public String getCategoryId() {
@@ -40,4 +44,11 @@ public class Time {
         this.categoryName = categoryName;
     }
 
+    public List<String> getUrlsRefGradles() {
+        return urlsRefGradles;
+    }
+
+    public void setUrlsRefGradles(List<String> urlsRefGradles) {
+        this.urlsRefGradles = urlsRefGradles;
+    }
 }

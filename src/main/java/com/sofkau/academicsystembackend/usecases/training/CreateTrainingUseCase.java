@@ -29,4 +29,3 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
                         .apply(training));
     }
 }
-

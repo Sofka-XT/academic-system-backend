@@ -14,6 +14,7 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @SpringBootTest
 class GetAllCourseUseCaseTest {
@@ -32,12 +33,12 @@ class GetAllCourseUseCaseTest {
 
         ArrayList<Category> categories = new ArrayList<>();
         ArrayList<Rule> rules =new ArrayList<>();
-
+        ArrayList<String> url = new ArrayList<>(Arrays.asList("https://www.youtube.com/watch?v=NE6pANWJGuU&list=RDXfdgwJenJKY&index=4&ab_channel=fosterthepeopleVEVO"));
         rules.add(new Rule(Type.DANGER,"<","25",new Feedback("feedbackName","url")));
 
 
-        categories.add(new Category("testCategorie1", rules));
-        categories.add(new Category( "testCategorie2", rules));
+        categories.add(new Category("testCategorie1", rules, url));
+        categories.add(new Category( "testCategorie2", rules, url));
 
         var courseDTO = new CourseDTO("1", "testCourse1", categories);
         var course = new Course();
