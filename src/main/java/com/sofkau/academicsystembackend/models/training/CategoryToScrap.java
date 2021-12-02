@@ -1,18 +1,22 @@
 package com.sofkau.academicsystembackend.models.training;
 
+import java.util.List;
+
 public class CategoryToScrap {
 
     private String categoryId;
-    private String categoryURL;
+    private List<String> categoryURL;
     private String courseId;
+    private int duration;
 
     public CategoryToScrap() {
     }
 
-    public CategoryToScrap(String categoryId, String categoryURL, String courseId) {
+    public CategoryToScrap(String categoryId, List<String> categoryURL, String courseId, int duration) {
         this.categoryId = categoryId;
         this.categoryURL = categoryURL;
         this.courseId = courseId;
+        this.duration = duration;
     }
 
     public String getCategoryId() {
@@ -23,11 +27,27 @@ public class CategoryToScrap {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryURL() {
+    public List<String> getCategoryURL() {
         return categoryURL;
     }
 
-    public void setCategoryURL(String categoryURL) {
+    public void setCategoryURL(List<String> categoryURL) {
         this.categoryURL = categoryURL;
+    }
+
+    public String getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }

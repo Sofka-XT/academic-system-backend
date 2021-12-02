@@ -15,7 +15,6 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     private TrainingMapper trainingMapper;
     private TrainingRepository trainingRepository;
-    private ApplicationEventPublisher applicationEventPublisher;
 
     public CreateTrainingUseCase(TrainingRepository trainingRepository, TrainingMapper trainingMapper) {
         this.trainingRepository = trainingRepository;
@@ -24,8 +23,6 @@ public class CreateTrainingUseCase implements Function<TrainingDTO, Mono<Trainin
 
     @Override
     public Mono<TrainingDTO> apply(TrainingDTO trainingDTO) {
-
-        applicationEventPublisher.publishEvent(trainingDTO);
         return trainingRepository.save(trainingMapper.mapperToTraining()
                         .apply(trainingDTO)).map(training -> trainingMapper.mapperEntityToTrainingDTO().apply(training));
     }
