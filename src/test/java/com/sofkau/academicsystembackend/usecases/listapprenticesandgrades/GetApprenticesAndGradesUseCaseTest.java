@@ -1,13 +1,13 @@
-package com.sofkau.academicsystembackend.usecases.apprentice;
+package com.sofkau.academicsystembackend.usecases.listapprenticesandgrades;
 
 import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
 import com.sofkau.academicsystembackend.collections.apprentice.CategoryScore;
 import com.sofkau.academicsystembackend.collections.apprentice.CourseScore;
 import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
-import com.sofkau.academicsystembackend.usecases.listapprenticesandgrades.GetApprenticesAndGradesUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -23,12 +23,12 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class GetApprenticesAndGradesUseCaseTest {
 
-    @MockBean
-    private ApprenticeScoreRepository apprenticeScoreRepository;
-
     @SpyBean
 
-    private GetApprenticesAndGradesUseCase getApprenticesAndGradesUseCase;
+    GetApprenticesAndGradesUseCase getApprenticesAndGradesUseCase;
+
+    @MockBean
+    ApprenticeScoreRepository apprenticeScoreRepository;
 
     @Test
     void GetApprenticeScoreU(){
@@ -41,15 +41,23 @@ public class GetApprenticesAndGradesUseCaseTest {
         courseScores.add(new CourseScore("2", "El curso 2.0", categoryScoreList));
 
         var apprenticeScoreDTO = new ApprenticeScoreDTO("apprentice@mail.com", "Carlos", "1","321321321", courseScores);
-        var apprenticeScore = new ApprenticeScore("apprentice@mail.com", "Carlos", "1","321321321", courseScores);
+        var apprenticeScore = new ApprenticeScore();
+
+        apprenticeScore.setEmail(apprenticeScoreDTO.getEmail());
+        apprenticeScore.setApprenticeName(apprenticeScoreDTO.getApprenticeName());
+        apprenticeScore.setTrainingId(apprenticeScoreDTO.getTrainingId());
+        apprenticeScore.setPhoneNumber(apprenticeScoreDTO.getPhoneNumber());
+        apprenticeScore.setCourseScores(apprenticeScoreDTO.getCourseScores());
 
         Mono<ApprenticeScore> mono = Mono.just(apprenticeScore);
 
         when(apprenticeScoreRepository.save(any())).thenReturn(mono);
 
-        var result=getApprenticesAndGradesUseCase.apply("1");
+        Mockito.when(apprenticeScoreRepository.findByEmail(apprenticeScoreDTO.getEmail())).thenReturn(Mono.just(apprenticeScore));
 
-        Assertions.assertEquals(Objects.requireNonNull(result.block().getTrainingId()),"1");
+        var result = getApprenticesAndGradesUseCase.apply("apprentice@mail.com");
+
+        Assertions.assertEquals(result.block().getEmail(), "apprentice@mail.com");
     }
 
 
