@@ -25,7 +25,7 @@ public class TrainingDTO {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
-    private Map<String, List<CategoryToScrap>> categoriesToScraps;
+    private Map<String, List<CategoryToScrap>> categoriesToScrap;
 
 
 
