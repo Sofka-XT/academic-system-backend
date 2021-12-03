@@ -40,6 +40,7 @@ public class ScrapingScoreFromTrainings {
                   logger.info(scraps.toString());
                   return  scraps;
                 });
+
                 return traing;
               });
     }
