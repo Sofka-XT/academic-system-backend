@@ -1,7 +1,6 @@
 package com.sofkau.academicsystembackend.usecases.scrapping;
 
 import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
-import com.sofkau.academicsystembackend.extraction.SeleniumProcessLogin;
 import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
 import com.sofkau.academicsystembackend.models.scrap.ScrapDTO;
 import com.sofkau.academicsystembackend.usecases.apprentice.UpdateApprenticeScoreUseCase;
