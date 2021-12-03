@@ -15,8 +15,11 @@
     <description>academic-system-backend</description>
     <properties>
         <java.version>11</java.version>
+        <sonar.organization>sofka-xt</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
     <dependencies>
+             
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
