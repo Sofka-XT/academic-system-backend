@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.config.CorsRegistry;
 import org.springframework.web.reactive.config.WebFluxConfigurer;
 import org.springframework.web.reactive.config.WebFluxConfigurerComposite;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class WebFluxConfig {
@@ -19,5 +20,11 @@ public class WebFluxConfig {
                         .allowedMethods("*");
             }
         };
+    }
+
+    @Bean
+    public WebClient registerWebClient(){
+        return  WebClient.create("http://localhost:8080");
+
     }
 }

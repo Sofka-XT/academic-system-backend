@@ -23,7 +23,7 @@ public class CreateCourseRouter {
                 .flatMap(result -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(result))
-                .onErrorResume(e -> Mono.just(Map.of("error",e.getMessage()))
+                .onErrorResume(e -> Mono.just(Map.of("Error", e.getMessage()))
                         .flatMap(s -> ServerResponse.badRequest()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(s)));

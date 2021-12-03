@@ -1,8 +1,12 @@
 package com.sofkau.academicsystembackend.models.training;
 
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+
 import java.util.ArrayList;
 import java.util.List;
-
+@Builder
+@EqualsAndHashCode
 public class CategoryToScrap {
 
     private String categoryId;
@@ -19,6 +23,8 @@ public class CategoryToScrap {
         this.courseId = courseId;
         this.duration = duration;
     }
+
+
 
     public String getCategoryId() {
         return categoryId;

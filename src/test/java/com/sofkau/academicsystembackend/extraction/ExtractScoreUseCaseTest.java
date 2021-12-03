@@ -1,0 +1,28 @@
+package com.sofkau.academicsystembackend.extraction;
+
+import org.apache.xpath.operations.Equals;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+class ExtractScoreUseCaseTest {
+
+    @Test
+    void validation(){
+        List<String> emails = new ArrayList<>();
+        emails.add("ktns0930@gmail.com");
+        emails.add("juanfth2001@gmail.com");
+        emails.add("141013@unsaac.edu.pe");
+        emails.add("sebasruigalle62@gmail.com");
+        emails.add("yamsoncalapzu@gmail.com");
+        var seleniumLogin = new SeleniumProcessLogin();
+        var usecase = new ExtractScoreUseCase(seleniumLogin);
+        var list = usecase.apply("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:", emails);
+        System.out.println(list);
+        Assertions.assertEquals(3, list.size());
+    }
+
+}

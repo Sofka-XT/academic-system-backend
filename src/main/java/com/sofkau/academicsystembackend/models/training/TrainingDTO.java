@@ -2,13 +2,14 @@ package com.sofkau.academicsystembackend.models.training;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
 import com.sofkau.academicsystembackend.collections.training.Coach;
+import lombok.Builder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-
+@Builder
 public class TrainingDTO {
     private String trainingId;
     private String name;
