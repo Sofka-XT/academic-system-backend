@@ -17,11 +17,6 @@ public class ScrappingScoreUseCase {
 
     public void apply(){
         getTrainingUseCase.apply().subscribeOn(Schedulers.parallel()).subscribe();
-
-
-
-
-
     }
 
 

@@ -7,6 +7,7 @@ import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import reactor.core.publisher.Flux;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,11 +27,11 @@ class CreateScrapDtoFromTrainingUseCaseTest {
 
     var categorysToScrap = new HashMap<String, List<CategoryToScrap>>();
     var category =
-    categorysToScrap.put("2021-12-01", List.of(
-            CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-1").categoryURL(List.of("url1111","url2222")).build(),
-            CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-1").categoryURL(List.of("url3333","url4444")).build(),
-            CategoryToScrap.builder().categoryId("xxxx-5555").courseId("xxxx-6666-2021-12-1").categoryURL(List.of("url5555","url66666")).build()
-    ) );
+            categorysToScrap.put("2021-12-01", List.of(
+                    CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-1").categoryURL(List.of("url1111","url2222")).build(),
+                    CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-1").categoryURL(List.of("url3333","url4444")).build(),
+                    CategoryToScrap.builder().categoryId("xxxx-5555").courseId("xxxx-6666-2021-12-1").categoryURL(List.of("url5555","url66666")).build()
+            ) );
     categorysToScrap.put("2021-12-04", List.of(
             CategoryToScrap.builder().categoryId("xxxx-1111").courseId("xxxx-2222-2021-12-4").categoryURL(List.of("url1111","url2222")).build(),
             CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-4").categoryURL(List.of("url3333","url4444")).build()
@@ -60,8 +61,8 @@ class CreateScrapDtoFromTrainingUseCaseTest {
             .categoriesToScrapCalendar(categorysToScrap)
             .coaches(listOfCoaches).build();
 
-    var response =createScrapDtoFromTrainingUseCase.apply(trainingDTO1,LocalDate.of(2021,12,4));
-    var result = List.of(
+    var response = createScrapDtoFromTrainingUseCase.apply(trainingDTO1,LocalDate.of(2021,12,4));
+    var result = Flux.fromIterable(List.of(
             ScrapDTO.builder().studentsEmails(List.of( "algo@gmail.com",
                     "otracosa@gmail.com",
                     "maluco@gmail.com",
@@ -70,9 +71,9 @@ class CreateScrapDtoFromTrainingUseCaseTest {
                     "otracosa@gmail.com",
                     "maluco@gmail.com",
                     "el-bejuco@gmail.com")).categoriesToScraps(CategoryToScrap.builder().categoryId("xxxx-3333").courseId("xxxx-4444-2021-12-4").categoryURL(List.of("url3333","url4444")).build()).build()
+    ));
 
-
-    );
-    assertEquals(result , response);
+    assertEquals(result.collectList().block().get(0).toString() , response.collectList().block().get(0).toString());
+    assertEquals(result.collectList().block().get(1).toString() , response.collectList().block().get(1).toString());
   }
 }
