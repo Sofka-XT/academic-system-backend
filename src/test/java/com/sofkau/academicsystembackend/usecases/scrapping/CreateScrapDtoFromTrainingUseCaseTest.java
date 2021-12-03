@@ -57,7 +57,7 @@ class CreateScrapDtoFromTrainingUseCaseTest {
             .programId("61a12cb1fb9597627509645c")
             .startingDate(LocalDate.of(2022, 11, 3))
             .apprentices(listOfApprentices1)
-            .categoriesToScraps(categorysToScrap)
+            .categoriesToScrapCalendar(categorysToScrap)
             .coaches(listOfCoaches).build();
 
     var response =createScrapDtoFromTrainingUseCase.apply(trainingDTO1,LocalDate.of(2021,12,4));

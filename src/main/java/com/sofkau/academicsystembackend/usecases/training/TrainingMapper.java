@@ -19,6 +19,7 @@ public class TrainingMapper {
             training.setStartingDate(trainingDTO.getStartingDate());
             training.setApprentices(trainingDTO.getApprentices());
             training.setCoaches(trainingDTO.getCoaches());
+            training.setCategoriesToScrapCalendar(trainingDTO.getCategoriesToScrapCalendar());
 
             return training;
         };
@@ -34,6 +35,7 @@ public class TrainingMapper {
             trainingDTO.setStartingDate(training.getStartingDate());
             trainingDTO.setApprentices(training.getApprentices());
             trainingDTO.setCoaches(training.getCoaches());
+            trainingDTO.setCategoriesToScrapCalendar(training.getCategoriesToScrapCalendar());
 
             return trainingDTO;
         };

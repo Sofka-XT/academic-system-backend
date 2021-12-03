@@ -2,20 +2,13 @@ package com.sofkau.academicsystembackend.models.training;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
 import com.sofkau.academicsystembackend.collections.training.Coach;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
-
 import java.util.List;
 import java.util.Map;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
 public class TrainingDTO {
     private String trainingId;
@@ -25,25 +18,27 @@ public class TrainingDTO {
     private LocalDate startingDate;
     private List<Apprentice> apprentices;
     private List<Coach> coaches;
-    private Map<String, List<CategoryToScrap>> categoriesToScraps;
+    private Map<String, List<CategoryToScrap>> categoriesToScrapCalendar;
 
 
-
+    public TrainingDTO() {
+    }
 
     public TrainingDTO(String trainingId) {
         this.trainingId = trainingId;
     }
 
-
-
-
-    public Map<String, List<CategoryToScrap>> getCategoriesToScraps() {
-        return categoriesToScraps;
+    public TrainingDTO(String trainingId, String name, String programId, LocalDate startingDate, List<Apprentice> apprentices, List<Coach> coaches, Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
+        this.trainingId = trainingId;
+        this.name = name;
+        this.programId = programId;
+        this.startingDate = startingDate;
+        this.apprentices = apprentices;
+        this.coaches = coaches;
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
-    public void setCategoriesToScraps(Map<String, List<CategoryToScrap>> categoriesToScraps) {
-        this.categoriesToScraps = categoriesToScraps;
-    }
+
 
     public String getTrainingId() {
         return trainingId;
@@ -91,6 +86,22 @@ public class TrainingDTO {
 
     public void setCoaches(List<Coach> coaches) {
         this.coaches = coaches;
+    }
+
+    public String getProgramId() {
+        return programId;
+    }
+
+    public void setProgramId(String programId) {
+        this.programId = programId;
+    }
+
+    public Map<String, List<CategoryToScrap>> getCategoriesToScrapCalendar() {
+        return categoriesToScrapCalendar;
+    }
+
+    public void setCategoriesToScrapCalendar(Map<String, List<CategoryToScrap>> categoriesToScrapCalendar) {
+        this.categoriesToScrapCalendar = categoriesToScrapCalendar;
     }
 
     @Override
