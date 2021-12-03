@@ -13,7 +13,7 @@ public class ScrappingScoreUseCase {
     private ScrapingScoreFromTrainings getTrainingUseCase;
 
 
-    @Scheduled(cron = "*/10 * * * * *")
+    @Scheduled(cron = "0 30 6 ? * MON,TUE,WED,THU,FRI")
 
     public void apply(){
         getTrainingUseCase.apply().subscribeOn(Schedulers.parallel()).subscribe();
