@@ -37,7 +37,5 @@ public class SeleniumProcessLogin implements ProcessLogin {
 
     @Override
     public void logout() {
-        if (driver != null) {
-        }
     }
 }
