@@ -16,15 +16,15 @@ import java.util.stream.Collectors;
 public class  CreateScrapDtoFromTrainingUseCase {
     Logger logger = LoggerFactory.getLogger(CreateScrapDtoFromTrainingUseCase.class);
 
-  public Flux<String> apply(TrainingDTO trainingDTO, LocalDate localDate){
-//    var emailsStudents = getEmailsToApprentices(trainingDTO.getApprentices());
-//    var mapFiltred = trainingDTO.getCategoriesToScrapCalendar().get(localDate.toString());
-    logger.warn(LocalDate.now().toString());
-//    if(mapFiltred == null){
-//      return  null;
-//    }
-//    return Flux.fromIterable(mapFiltred.stream().map(categoryToScrap -> new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList()));
-    return  Flux.fromIterable(List.of("sdsd","sdsd"));
+  public Flux<ScrapDTO> apply(TrainingDTO trainingDTO, LocalDate localDate){
+    var emailsStudents = getEmailsToApprentices(trainingDTO.getApprentices());
+    var mapFiltred = trainingDTO.getCategoriesToScrapCalendar().get(localDate.toString());
+//    logger.warn(LocalDate.now().toString());
+    if(mapFiltred == null){
+      return  null;
+    }
+    return Flux.fromIterable(mapFiltred.stream().map(categoryToScrap -> new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList()));
+//    return  Flux.fromIterable(List.of("sdsd","sdsd"));
   }
 
 

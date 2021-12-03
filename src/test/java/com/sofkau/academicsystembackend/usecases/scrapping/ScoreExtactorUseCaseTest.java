@@ -50,7 +50,7 @@ class ScoreExtactorUseCaseTest {
         emails.add("juanfth2001@gmail.com");
         ArrayList<String> uris = new ArrayList<>();
         uris.add("reports/listtestusers/id:2121,type:Test,group:,branch:,completion_status:");
-        var scrap = new CategoryToScrap("c-111", uris, "cu-111");
+        var scrap = new CategoryToScrap("c-111", uris, "cu-111",20);
         var dto = new ScrapDTO(emails, scrap);
 
         Mockito.when(updateApprenticeScoreUseCase.updateApprentice(any())).thenReturn(Mono.just("juanfth2001@gmail.com"));
