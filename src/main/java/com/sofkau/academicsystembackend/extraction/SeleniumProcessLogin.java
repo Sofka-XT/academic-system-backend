@@ -37,5 +37,6 @@ public class SeleniumProcessLogin implements ProcessLogin {
 
     @Override
     public void logout() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
