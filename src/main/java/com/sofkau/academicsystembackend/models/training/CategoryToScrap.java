@@ -22,8 +22,6 @@ public class CategoryToScrap {
         this.duration = duration;
     }
 
-
-
     public String getCategoryId() {
         return categoryId;
     }
@@ -54,5 +52,15 @@ public class CategoryToScrap {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryToScrap{" +
+                "categoryId='" + categoryId + '\'' +
+                ", categoryURL=" + categoryURL +
+                ", courseId='" + courseId + '\'' +
+                ", duration=" + duration +
+                '}';
     }
 }

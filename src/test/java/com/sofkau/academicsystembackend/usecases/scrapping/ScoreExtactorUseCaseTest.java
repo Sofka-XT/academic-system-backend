@@ -1,14 +1,7 @@
 package com.sofkau.academicsystembackend.usecases.scrapping;
 
-
-import com.sofkau.academicsystembackend.collections.apprentice.ApprenticeScore;
-import com.sofkau.academicsystembackend.collections.apprentice.CategoryScore;
-import com.sofkau.academicsystembackend.collections.apprentice.CourseScore;
 import com.sofkau.academicsystembackend.extraction.ExtractScoreUseCase;
 import com.sofkau.academicsystembackend.extraction.Score;
-import com.sofkau.academicsystembackend.models.apprentice.ApprenticeScoreDTO;
-import com.sofkau.academicsystembackend.models.apprentice.ScoreDTO;
-import com.sofkau.academicsystembackend.models.scrap.ApprenticeDTO;
 import com.sofkau.academicsystembackend.models.scrap.ScrapDTO;
 import com.sofkau.academicsystembackend.models.training.CategoryToScrap;
 import com.sofkau.academicsystembackend.repositories.ApprenticeScoreRepository;
