@@ -23,8 +23,9 @@ public class ScrapingScoreFromTrainings {
     Logger logger = LoggerFactory.getLogger(ScrapingScoreFromTrainings.class);
     @Autowired
     private WebClient client;
-    private MapperUtilsScrapping mapperUtilsScrapping;
+
     private CreateScrapDtoFromTrainingUseCase createScrapDtoFromTrainingUseCase;
+
 
 
 
@@ -37,8 +38,7 @@ public class ScrapingScoreFromTrainings {
 //
                 var scrapsDTO = mapFiltred.stream().map(categoryToScrap -> new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList());
                 scrapsDTO.stream().map(scraps -> {
-                  logger.info(scraps.toString());
-                  return  scraps;
+                  Sc
                 });
 
                 return traing;

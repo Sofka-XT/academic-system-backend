@@ -1,12 +1,8 @@
-package com.sofkau.academicsystembackend.usecases.scrapping;
+package com.sofkau.academicsystembackend.models.scrap;
 
 import com.sofkau.academicsystembackend.collections.training.Apprentice;
-import com.sofkau.academicsystembackend.collections.training.Training;
-import com.sofkau.academicsystembackend.models.scrap.ApprenticeDTO;
-import com.sofkau.academicsystembackend.models.training.TrainingDTO;
 import org.springframework.beans.BeanUtils;
 
-import java.beans.JavaBean;
 import java.util.function.Function;
 
 public class MapperUtilsScrapping {
