@@ -19,12 +19,11 @@ public class  CreateScrapDtoFromTrainingUseCase {
   public Flux<ScrapDTO> apply(TrainingDTO trainingDTO, LocalDate localDate){
     var emailsStudents = getEmailsToApprentices(trainingDTO.getApprentices());
     var mapFiltred = trainingDTO.getCategoriesToScrapCalendar().get(localDate.toString());
-//    logger.warn(LocalDate.now().toString());
+
     if(mapFiltred == null){
-      return  null;
+      return  Flux.empty();
     }
     return Flux.fromIterable(mapFiltred.stream().map(categoryToScrap -> new ScrapDTO(emailsStudents,categoryToScrap)).collect(Collectors.toList()));
-//    return  Flux.fromIterable(List.of("sdsd","sdsd"));
   }
 
 

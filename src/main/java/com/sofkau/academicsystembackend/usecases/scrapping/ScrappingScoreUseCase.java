@@ -13,7 +13,7 @@ public class ScrappingScoreUseCase {
 
     @Autowired
     private ScrapingScoreFromTrainings getTrainingUseCase;
-    private ScoreExtactorUseCase scoreExtactorUseCase;
+
 
     @Scheduled(cron = "*/10 * * * * *")
 
